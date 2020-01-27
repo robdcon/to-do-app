@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-//import { Test } from './ToDoList.styles';
+//import { Test } from './ToDoContainer.styles';
 
-class ToDoList extends PureComponent { 
+class ToDoContainer extends PureComponent { 
   constructor(props) {
     super(props);
 
@@ -12,27 +12,27 @@ class ToDoList extends PureComponent {
   }
 
   componentWillMount = () => {
-    console.log('ToDoList will mount');
+    console.log('ToDoContainer will mount');
   }
 
   componentDidMount = () => {
-    console.log('ToDoList mounted');
+    console.log('ToDoContainer mounted');
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log('ToDoList will receive props', nextProps);
+    console.log('ToDoContainer will receive props', nextProps);
   }
 
   componentWillUpdate = (nextProps, nextState) => {
-    console.log('ToDoList will update', nextProps, nextState);
+    console.log('ToDoContainer will update', nextProps, nextState);
   }
 
   componentDidUpdate = () => {
-    console.log('ToDoList did update');
+    console.log('ToDoContainer did update');
   }
 
   componentWillUnmount = () => {
-    console.log('ToDoList will unmount');
+    console.log('ToDoContainer will unmount');
   }
 
   render () {
@@ -40,19 +40,19 @@ class ToDoList extends PureComponent {
       return <h1>Something went wrong.</h1>;
     }
     return (
-      <div className="ToDoListWrapper">
+      <div className="ToDoContainerWrapper">
         Test content
       </div>
     );
   }
 }
 
-ToDoList.propTypes = {
+ToDoContainer.propTypes = {
   // bla: PropTypes.string,
 };
 
-ToDoList.defaultProps = {
+ToDoContainer.defaultProps = {
   // bla: 'test',
 };
 
-export default ToDoList;
+export default ToDoContainer;

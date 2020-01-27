@@ -6,7 +6,7 @@ import TextArea from './components/TextArea';
 const App: React.FC = () => {
   return (
     <div className="App">
-    <TextArea text='hello world!!!' />
+       <TextArea a={[{a:'a'},{b:'b'}]} o={{a:'test'}} i={1}  text="Hello World!!!" />
     </div>
   );
 }
