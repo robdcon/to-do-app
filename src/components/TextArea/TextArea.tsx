@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //import { Test } from './TextArea.styles';
 
-const TextArea = (props) => (
+interface Props {
+  text: string
+}
+
+const TextArea: React.FC<Props> = (props) => (
   <div className="TextAreaWrapper">
-    Test content
+    {props.children}
   </div>
 );
 
