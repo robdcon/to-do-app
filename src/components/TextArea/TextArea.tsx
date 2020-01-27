@@ -8,7 +8,7 @@ interface Props {
 
 const TextArea: React.FC<Props> = (props) => (
   <div className="TextAreaWrapper">
-    {props.children}
+    {props.text}
   </div>
 );
 
