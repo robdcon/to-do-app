@@ -40,8 +40,10 @@ class ToDoContainer extends PureComponent {
 
     let newToDoList = [
 
-      ...this.state.toDoList,
-      {text:'New To Do', status: 'pending'}
+     
+      {text:'New To Do', status: 'pending'},
+      ...this.state.toDoList
+
 
     ]
 
