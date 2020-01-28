@@ -4,13 +4,13 @@ import { StyledToDo } from './ToDo.styles';
 
 interface ToDo {
   text: string,
-  done: boolean
+  status: string
 }
 
 
 const ToDo: React.FC<ToDo> = (props) => (
-  <StyledToDo className="ToDoWrapper">
-    Test content
+  <StyledToDo className={`ToDoWrapper ${props.status}`}>
+    {props.text}
   </StyledToDo>
 );
 
