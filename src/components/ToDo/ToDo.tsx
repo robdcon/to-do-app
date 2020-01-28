@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import { Test } from './ToDo.styles';
+import { StyledToDo } from './ToDo.styles';
 
-const ToDo = (props) => (
-  <div className="ToDoWrapper">
+interface ToDo {
+  text: string,
+  done: boolean
+}
+
+
+const ToDo: React.FC<ToDo> = (props) => (
+  <StyledToDo className="ToDoWrapper">
     Test content
-  </div>
+  </StyledToDo>
 );
 
 ToDo.propTypes = {
