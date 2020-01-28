@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-//import { Test } from './ToDoContainer.styles';
+import { StyledContainer } from './ToDoContainer.styles';
 
 class ToDoContainer extends PureComponent { 
   constructor(props) {
@@ -29,9 +29,9 @@ class ToDoContainer extends PureComponent {
       return <h1>Something went wrong.</h1>;
     }
     return (
-      <div className="ToDoContainerWrapper">
+      <StyledContainer className="ToDoContainerWrapper">
         {this.props.children}
-      </div>
+      </StyledContainer>
     );
   }
 }
