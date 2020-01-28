@@ -15,7 +15,8 @@ const TextArea: React.FC<Props> = (props) => {
 
   return(
   <div className="TextAreaWrapper">
-    {inputText}
+    <h1>{inputText}</h1>
+    {props.text}
     <button onClick={() => setInputText('Hello!!!')}></button>
   </div>
   )

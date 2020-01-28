@@ -8,9 +8,10 @@ class ToDoList extends PureComponent {
 
     this.state = {
       hasError: false,
-      count:0
+      inputText:''
     };
   }
+  
 
   render () {
     return (
