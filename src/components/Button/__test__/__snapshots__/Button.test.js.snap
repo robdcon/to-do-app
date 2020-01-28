@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="ButtonWrapper"
+  data-testid="add-btn"
+>
+  <button>
+    save
+  </button>
+</div>
+`;
