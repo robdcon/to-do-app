@@ -6,15 +6,11 @@ import ToDoContainer from './components/ToDoContainer';
 
 
 const App: React.FC = () => {
-
- 
-
+  
   return (
 
     <div className="App">
-      <ToDoContainer>
-       
-      </ToDoContainer>
+      <ToDoContainer />
     </div>
   );
 }
