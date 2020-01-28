@@ -1,6 +1,24 @@
 import React, { PureComponent } from 'react';
-
 import { StyledContainer } from './ToDoContainer.styles';
+import Button from '../Button';
+import ToDo from '../ToDo';
+
+const toDoList = [
+
+  {
+    text: 'To Do One',
+    status: 'done'
+  },
+  {
+    text: 'To Do Two',
+    status: 'pending'
+  },
+  {
+    text: 'To Do Three',
+    status: 'pending'
+  },
+
+]
 
 class ToDoContainer extends PureComponent { 
   constructor(props) {
@@ -8,10 +26,31 @@ class ToDoContainer extends PureComponent {
 
     this.state = {
       hasError: false,
+      toDoList: toDoList
     };
   }
 
-  
+  displayToDo = (todo) => {
+
+        return <ToDo text={todo.text} status={todo.status} />
+ 
+  }
+
+  addToDo = () => {
+
+    let newToDoList = [
+
+      ...this.state.toDoList,
+      {text:'New To Do', status: 'pending'}
+
+    ]
+
+    this.setState({
+      toDoList: newToDoList
+    })
+
+  }
+
   componentDidMount = () => {
     console.log('ToDoContainer mounted');
   }
@@ -30,7 +69,8 @@ class ToDoContainer extends PureComponent {
     }
     return (
       <StyledContainer className="ToDoContainerWrapper">
-        {this.props.children}
+        {this.state.toDoList.map(this.displayToDo)}
+        <Button text="Click Me" handleClick={this.addToDo}/>
       </StyledContainer>
     );
   }
