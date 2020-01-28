@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //import { Test } from './Button.styles';
 
-const Button = (props) => (
+interface Props {
+  text: string,
+  handleClick: () => void
+}
+
+const Button:React.FC<Props> = (props) => (
   <div className="ButtonWrapper">
-    Test content
+    <button onClick={props.handleClick}>{props.text}</button>
   </div>
 );
 

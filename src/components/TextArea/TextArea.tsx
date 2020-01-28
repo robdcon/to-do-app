@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 //import { Test } from './TextArea.styles';
 
 interface Props {
-  text:string,
-  i:number,
-  o:{},
-  a?:Array<Object>
+  text:string
 }
 
 const TextArea: React.FC<Props> = (props) => {
