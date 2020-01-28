@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledToDo } from './ToDo.styles';
-// Test
-import { render, fireEvent, waitForElement } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 
 interface ToDo {
   text: string,
