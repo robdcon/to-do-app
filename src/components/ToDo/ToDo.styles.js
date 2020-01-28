@@ -11,7 +11,7 @@ export const StyledToDo = styled.div`
  transition: all 3s;
 
  &:hover {
-    box-shadow: inset 9px 9px 10px rgb(163,177,198,0.6), inset -9px -9px 10px  rgba(255,255,255, 0.5);
+    box-shadow: 9px 9px 15px rgb(163,177,198,0.6), -9px -9px 15px  rgba(255,255,255, 0.5);
  }
 
 `;

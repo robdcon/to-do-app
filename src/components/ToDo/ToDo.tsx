@@ -12,7 +12,7 @@ interface ToDo {
 
 
 const ToDo: React.FC<ToDo> = (props) => (
-  <StyledToDo className={`ToDoWrapper ${props.status}`}>
+  <StyledToDo data-testid="test-todo" className={`ToDoWrapper ${props.status}`}>
     {props.text}
   </StyledToDo>
 );
