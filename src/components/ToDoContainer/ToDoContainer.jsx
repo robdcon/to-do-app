@@ -3,30 +3,13 @@ import { StyledContainer } from './ToDoContainer.styles';
 import Button from '../Button';
 import ToDo from '../ToDo';
 
-const toDoList = [
-
-  {
-    text: 'To Do One',
-    status: 'done'
-  },
-  {
-    text: 'To Do Two',
-    status: 'pending'
-  },
-  {
-    text: 'To Do Three',
-    status: 'pending'
-  },
-
-]
-
 class ToDoContainer extends PureComponent { 
   constructor(props) {
     super(props);
 
     this.state = {
       hasError: false,
-      toDoList: toDoList
+      toDoList: []
     };
   }
 
