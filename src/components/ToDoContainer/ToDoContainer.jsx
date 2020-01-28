@@ -9,25 +9,32 @@ class ToDoContainer extends PureComponent {
 
     this.state = {
       hasError: false,
-      toDoList: []
+      toDoList: [],
+      uniqueId: 0
     };
+  }
+
+  getUniqueId = () =>
+  {
+    const id = this.state.uniqueId;
+    const newId = id + 1;
+    this.setState({uniqueId: newId});
+    return newId;
   }
 
   displayToDo = (todo) => {
 
-        return <ToDo text={todo.text} status={todo.status} />
- 
+        return <ToDo key={todo.id} id={todo.id} text={todo.text} status={todo.status} />
   }
 
-  addToDo = () => {
+  addToDo = (textInput) => {
 
+    const uniqueID = this.getUniqueId();
     let newToDoList = [
 
+      ...this.state.toDoList,
+      {id: uniqueID, text:"new to do", status: 'pending'}
      
-      {text:'New To Do', status: 'pending'},
-      ...this.state.toDoList
-
-
     ]
 
     this.setState({
