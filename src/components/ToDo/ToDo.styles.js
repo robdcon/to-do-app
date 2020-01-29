@@ -13,4 +13,6 @@ export const StyledToDo = styled.label`
     box-shadow: inset 9px 9px 10px rgb(163,177,198,0.6), inset -9px -9px 10px  rgba(255,255,255, 0.5);
  }
 
+ text-decoration: ${props => props.done ? 'line-through' : 'none'}
+
 `;

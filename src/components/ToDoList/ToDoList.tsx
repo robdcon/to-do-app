@@ -4,7 +4,7 @@ import ToDo from '../ToDo'
 //import { Test } from './ToDoList.styles';
 
 const todos = [
-  {text:"todo one", done:false, id: null},
+  {text:"todo one", done:true, id: null},
   {text:"todo two",  done:false, id: null}
 ]
 
