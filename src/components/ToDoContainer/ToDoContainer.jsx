@@ -3,6 +3,13 @@ import { StyledContainer } from './ToDoContainer.styles';
 import Button from '../Button';
 import ToDo from '../ToDo';
 import TextArea from '../TextArea';
+import ToDoList from '../ToDoList';
+
+const todos = [
+  {text:"todo one", done:false, id: null},
+  {text:"todo two",  done:false, id: null}
+]
+
 
 class ToDoContainer extends PureComponent { 
   constructor(props) {
@@ -10,7 +17,7 @@ class ToDoContainer extends PureComponent {
 
     this.state = {
       hasError: false,
-      toDoList: [],
+      toDoList: todos,
       uniqueId: 0
     };
   }
@@ -75,7 +82,8 @@ class ToDoContainer extends PureComponent {
     }
     return (
       <StyledContainer className="ToDoContainerWrapper">
-        {this.state.toDoList.map(this.displayToDo)}
+        {/* {this.state.toDoList.map(this.displayToDo)} */}
+        <ToDoList />
         <Button text="Click Me" handleClick={this.addToDo}/>
         <TextArea />
       </StyledContainer>

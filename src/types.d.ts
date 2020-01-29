@@ -6,8 +6,8 @@ type ToDo = {
 }
 
 type ToDoProps = {
-    
+
     text: string,
     done: boolean,
-    id: number
+    id: number | null
 }
