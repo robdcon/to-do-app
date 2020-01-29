@@ -12,11 +12,17 @@ const TextArea: React.FC<Props> = (props) => {
 
   const [newToDoActive , setNewToDoActive] = useState(true);
   const [newToDoText , setNewToDoText] = useState('');
+  const [toDoList , setToDoList] = useState([]);
 
  
   
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewToDoText(e.target.value)
+  }
+
+  const handleSubmit  = (e: ChangeEvent<HTMLInputElement>) =>{
+    e.preventDefault();
+    setToDoList()
   }
 
   const toggleTodDo = () => {
@@ -32,7 +38,7 @@ const TextArea: React.FC<Props> = (props) => {
   return(
   <StyledTextAreaContainer className="TextAreaWrapper" active={newToDoActive}>
     <StyledInput id="todo-text" name="todo-text" value={newToDoText} onChange={handleChange} placeholder="What's to do?..." />
-    <StyledToggleButton onClick={toggleTodDo} active={newToDoActive}>SAVE</StyledToggleButton>
+    <StyledToggleButton onSubmit={handleSubmit}>SAVE</StyledToggleButton>
   </StyledTextAreaContainer>
   )
 };

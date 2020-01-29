@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTextAreaContainer = styled.div`
+export const StyledTextAreaContainer = styled.form`
 
  display: flex;
  position:absolute;
