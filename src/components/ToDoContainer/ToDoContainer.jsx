@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { StyledContainer } from './ToDoContainer.styles';
 import Button from '../Button';
 import ToDo from '../ToDo';
+import TextArea from '../TextArea';
 
 class ToDoContainer extends PureComponent { 
   constructor(props) {
@@ -14,26 +15,39 @@ class ToDoContainer extends PureComponent {
     };
   }
 
-  getUniqueId = () =>
-  {
+  getUniqueId = () => {
     const id = this.state.uniqueId;
     const newId = id + 1;
     this.setState({uniqueId: newId});
     return newId;
   }
-
+  // Return a ToDo component referencing data from toDoLiost array in state
   displayToDo = (todo) => {
 
         return <ToDo key={todo.id} id={todo.id} text={todo.text} status={todo.status} />
   }
 
-  addToDo = (textInput) => {
+  // Reveal text input field by setting status in state
+  showInput = () => {
+
+    this.setState({
+      newToDo: true
+    })
+  }
+
+  // Create new ToDo object by revealing a text input field and passing its value in an object to addToDo()
+  createToDo = () => {
+
+  }
+
+  // Add new dodo to array of todos in state, taking toDo object as parameter
+  addToDo = (toDo) => {
 
     const uniqueID = this.getUniqueId();
     let newToDoList = [
 
       ...this.state.toDoList,
-      {id: uniqueID, text:"new to do", status: 'pending'}
+      {id: uniqueID, text:toDo.text, status: toDo.status}
      
     ]
 
@@ -63,6 +77,7 @@ class ToDoContainer extends PureComponent {
       <StyledContainer className="ToDoContainerWrapper">
         {this.state.toDoList.map(this.displayToDo)}
         <Button text="Click Me" handleClick={this.addToDo}/>
+        <TextArea />
       </StyledContainer>
     );
   }

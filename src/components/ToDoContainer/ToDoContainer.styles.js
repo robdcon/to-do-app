@@ -9,6 +9,7 @@ export const StyledContainer = styled.div`
  flex-direction: column;
  justify-content:space-around;
  align-items:center;
+ overflow:hidden;
  background-color: #e0e5ec;
 `;
 

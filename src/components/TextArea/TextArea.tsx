@@ -1,21 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import PropTypes from 'prop-types';
-//import { Test } from './TextArea.styles';
+import { StyledTextAreaContainer, StyledToggleButton } from './TextArea.styles';
 
 interface Props {
-  text:string
+  text:string,
+  toggleToDo: () => void,
+  newToDoActive: boolean
 }
 
 const TextArea: React.FC<Props> = (props) => {
-  const [inputText , setInputText] = useState('');
+
+  const [newToDoActive , setNewToDoActive] = useState(true);
+  const [newToDoText , setNewToDoText] = useState('');
+
+ 
+  
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewToDoText(e.target.value)
+  }
+
+  const toggleTodDo = () => {
+    console.log('toggleToDo')
+    setNewToDoActive(!newToDoActive)
+    console.log(newToDoActive)
+
+  }
+
+
 
 
   return(
-  <div className="TextAreaWrapper">
-    <h1>{inputText}</h1>
-    {props.text}
-    <button onClick={() => setInputText('Hello!!!')}></button>
-  </div>
+  <StyledTextAreaContainer className="TextAreaWrapper" active={newToDoActive}>
+    <input id="todo-text" name="todo-text" value={newToDoText} onChange={handleChange} placeholder="What's to do?..." />
+  </StyledTextAreaContainer>
   )
 };
 
