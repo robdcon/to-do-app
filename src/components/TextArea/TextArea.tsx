@@ -22,7 +22,6 @@ const TextArea: React.FC<Props> = (props) => {
 
   const handleSubmit  = (e: ChangeEvent<HTMLInputElement>) =>{
     e.preventDefault();
-    setToDoList()
   }
 
   const toggleTodDo = () => {

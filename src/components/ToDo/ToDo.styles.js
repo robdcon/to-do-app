@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledToDo = styled.div`
+export const StyledToDo = styled.label`
 
  display: flex;
  justify-content:center;

@@ -1,25 +1,24 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //import { Test } from './ToDoList.styles';
 
-class ToDoList extends PureComponent { 
-  constructor(props:{}) {
-    super(props);
+const todos: Array<ToDo> = [
+  {text:"todo one", done:false, id: null},
+  {text:"todo two",  done:false, id: null}
+]
 
-    this.state = {
-      hasError: false,
-      inputText:''
-    };
-  }
-  
+const ToDoList: React.FC = (props) => (
+  <ul className="ToDoListWrapper">
+    
+  </ul>
+);
 
-  render () {
-    return (
-      <div className="ToDoListWrapper">
-        Test content
-      </div>
-    );
-  }
-}
+ToDoList.propTypes = {
+  // bla: PropTypes.string,
+};
+
+ToDoList.defaultProps = {
+  // bla: 'test',
+};
 
 export default ToDoList;
