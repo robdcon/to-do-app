@@ -17,7 +17,20 @@ export const StyledTextAreaContainer = styled.div`
 export const StyledToggleButton = styled.button`
 
  position:absolute;
+ width:100px;
+ height:100%;
  right:0;
  bottom:${(props) => props.active ? '0' : '50px'};
 
 `;
+
+export const StyledInput = styled.input`
+
+ height:100%;
+ width:50%;
+ margin:0 auto;
+
+`;
+
+
+

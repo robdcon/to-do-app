@@ -1,6 +1,6 @@
 import React, {useState, ChangeEvent} from 'react';
 import PropTypes from 'prop-types';
-import { StyledTextAreaContainer, StyledToggleButton } from './TextArea.styles';
+import { StyledTextAreaContainer, StyledToggleButton, StyledInput } from './TextArea.styles';
 
 interface Props {
   text:string,
@@ -31,7 +31,8 @@ const TextArea: React.FC<Props> = (props) => {
 
   return(
   <StyledTextAreaContainer className="TextAreaWrapper" active={newToDoActive}>
-    <input id="todo-text" name="todo-text" value={newToDoText} onChange={handleChange} placeholder="What's to do?..." />
+    <StyledInput id="todo-text" name="todo-text" value={newToDoText} onChange={handleChange} placeholder="What's to do?..." />
+    <StyledToggleButton onClick={toggleTodDo} active={newToDoActive}>SAVE</StyledToggleButton>
   </StyledTextAreaContainer>
   )
 };
