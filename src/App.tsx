@@ -7,7 +7,7 @@ import ToDoList from './components/ToDoList';
 import ToDo from './components/ToDo';
 
 const initialToDoList: Array<ToDo> = [
-  {text:"todo one", done:true, id: null},
+  {text:"todo one", done:false, id: null},
   {text:"todo two",  done:false, id: null}
 ]
 
@@ -36,8 +36,7 @@ const App: React.FC = () => {
   return (
 
     <div className="App">
-      <ToDo todo={toDoList[0]} toggleToDo={toggleToDo}/>
-      <ToDo todo={toDoList[1]} toggleToDo={toggleToDo}/>
+     <ToDoList todos={toDoList} toggleToDo={toggleToDo} />
     </div>
   );
 }
