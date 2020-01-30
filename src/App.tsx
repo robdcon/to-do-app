@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextArea from './components/TextArea';
 import ToDoContainer from './components/ToDoContainer';
+import ToDoList from './components/ToDoList';
+import ToDo from './components/ToDo';
 
+const initialToDoList: Array<ToDo> = [
+  {text:"todo one", done:true, id: null},
+  {text:"todo two",  done:false, id: null}
+]
 
 const App: React.FC = () => {
   
+  const [toDoList, setToDoList] = useState(initialToDoList)
+
+  const toggleToDo: ToggleToDo = selectedToDo => {
+  
+    console.log('done')
+    
+    const newToDos= toDoList.map((todo) => {
+        if(todo === selectedToDo) {
+          return {
+            ...todo,
+            done: !todo.done
+          }
+        }
+        return todo;
+    })
+
+    setToDoList(newToDos);
+
+  }
+
   return (
 
     <div className="App">
-      <ToDoContainer />
+      <ToDo todo={toDoList[0]} toggleToDo={toggleToDo}/>
+      <ToDo todo={toDoList[1]} toggleToDo={toggleToDo}/>
     </div>
   );
 }

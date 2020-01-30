@@ -1,26 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { StyledToDo } from './ToDo.styles';
 
-const ToDo: React.FC<ToDo> = (props) => (
+interface ToDoProps {
+  todo: ToDo,
+  toggleToDo: ToggleToDo
+}
+
+const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo}) => (
   <StyledToDo 
-    id={props.id} 
     data-testid="test-todo" 
-    done={props.done} 
-    className={`ToDoWrapper ${props.done}`}
+    done={todo.done} 
+    className={`ToDoWrapper`}
   >
-    <input type="checkbox"  onChange={() => props.toggleDone} />
-    {props.text}
+    <input type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
+    {todo.text}
   </StyledToDo>
 );
-
-ToDo.propTypes = {
-  // bla: PropTypes.string,
-};
-
-ToDo.defaultProps = {
-  // bla: 'test',
-  done:false
-};
 
 export default ToDo;

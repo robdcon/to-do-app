@@ -2,14 +2,10 @@ type ToDo = {
 
     text: string,
     done: boolean,
-    id: number | null,
-    toggleDone: (targetToDo: ToDo) => void
+    id: number | null
+    
 }
 
-type ToDoProps = {
 
-    text: string,
-    done: boolean,
-    id: number | null,
-    toggleDone: (targetToDo: ToDo) => void
-}
+type ToggleToDo = (selectedToDo: ToDo) => void;
+
