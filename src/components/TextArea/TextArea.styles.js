@@ -6,7 +6,7 @@ export const StyledTextAreaContainer = styled.form`
  position:absolute;
  overflow:hidden;
  bottom:0;
- margin-bottom:${(props) => props.active ? '0' : '-50px'};
+//  margin-bottom:${(props) => props.active ? '0' : '-50px'};
  width:100%;
  width:100vw;
  height:2rem;

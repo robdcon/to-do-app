@@ -37,6 +37,7 @@ const App: React.FC = () => {
 
     <div className="App">
      <ToDoList todos={toDoList} toggleToDo={toggleToDo} />
+     <TextArea />
     </div>
   );
 }

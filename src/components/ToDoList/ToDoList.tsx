@@ -12,12 +12,12 @@ interface ToDoListProps {
 const ToDoList: React.FC<ToDoListProps> = ({ todos, toggleToDo}) => {
 
    return ( 
-    <ul>
-      {
-        todos.map((todo) => {
-          return <ToDo key={todo.text} todo={todo} toggleToDo={toggleToDo} />
-        })
-      }
+      <ul>
+        {
+          todos.map((todo) => {
+            return <li key={todo.text}><ToDo todo={todo} toggleToDo={toggleToDo} /></li>
+          })
+        }
       </ul>
     )
 }
