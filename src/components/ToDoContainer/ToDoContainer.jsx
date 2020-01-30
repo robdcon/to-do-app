@@ -17,7 +17,7 @@ class ToDoContainer extends PureComponent {
 
     this.state = {
       hasError: false,
-      toDoList: todos,
+      toDoList: [],
       uniqueId: 0
     };
   }

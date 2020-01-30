@@ -8,16 +8,32 @@ const todos = [
   {text:"todo two",  done:false, id: null}
 ]
 
-const ToDoList: React.FC = (props) => {
+const ToDoList: React.FC<ToDoProps> = (props) => {
 
  const [toDoList, setToDoList] = useState(todos)
+
+ const toggleStatus = (targetToDo: ToDo) => {
+  console.log('done');
+  const updatedToDos = toDoList.map((toDo) => {
+    if(toDo === targetToDo){
+      return {
+        ...toDo,
+        done: !toDo.done
+      }
+    }
+    return toDo;
+  })
+
+  setToDoList(updatedToDos)
+
+}
 
   return (
 
   <ul className="ToDoListWrapper">
    { 
       toDoList.map((todo, i) => {
-       return <ToDo key={i} text={todo.text} done={todo.done} id={null} />
+       return <ToDo key={i} text={todo.text} done={todo.done} id={null} toggleDone={toggleStatus}/>
       })
     }
   </ul>
