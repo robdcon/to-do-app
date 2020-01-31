@@ -15,6 +15,10 @@ const App: React.FC = () => {
   
   const [toDoList, setToDoList] = useState(initialToDoList)
 
+  const addToDo = () => {
+    console.log('to do added')
+  }
+
   const toggleToDo: ToggleToDo = selectedToDo => {
   
     console.log('done')
@@ -37,7 +41,7 @@ const App: React.FC = () => {
 
     <div className="App">
      <ToDoList todos={toDoList} toggleToDo={toggleToDo} />
-     <TextArea />
+     <TextArea addToDo={addToDo}/>
     </div>
   );
 }

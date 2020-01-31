@@ -1,42 +1,36 @@
-import React, {useState, ChangeEvent} from 'react';
-import PropTypes from 'prop-types';
+import React, {useState, ChangeEvent, FormEvent} from 'react';
 import { StyledTextAreaContainer, StyledToggleButton, StyledInput } from './TextArea.styles';
 
-interface Props {
-  // text:string,
-  // toggleToDo: () => void,
-  // newToDoActive: boolean
+interface TextAreaProps {
+  addToDo: AddToDo
 }
 
-const TextArea: React.FC<Props> = (props) => {
+const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
-  // const [newToDoActive , setNewToDoActive] = useState(true);
-  // const [newToDoText , setNewToDoText] = useState('');
-  // const [toDoList , setToDoList] = useState([]);
-
+  const [newToDo , setNewToDo] = useState('');
  
-  
-  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setNewToDoText(e.target.value)
-  // }
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
-  // const handleSubmit  = (e: ChangeEvent<HTMLInputElement>) =>{
-  //   e.preventDefault();
-  // }
+    setNewToDo(e.target.value)
+   
+  }
 
-  // const toggleTodDo = () => {
-  //   console.log('toggleToDo')
-  //   setNewToDoActive(!newToDoActive)
-  //   console.log(newToDoActive)
+  const handleSubmit  = (e: FormEvent<HTMLButtonElement>) => {
 
-  // }
+    e.preventDefault();
+    addToDo(newToDo);
 
-  return(
-  <StyledTextAreaContainer className="TextAreaWrapper">
-    <StyledInput id="todo-text" name="todo-text" placeholder="What's to do?..." />
-    <StyledToggleButton >SAVE</StyledToggleButton>
+  }
+
+  return (
+
+  <StyledTextAreaContainer className="TextAreaWrapper" onSubmit={handleSubmit}>
+    <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What's to do?..." onChange={handleChange} />
+    <StyledToggleButton type="submit" >SAVE</StyledToggleButton>
   </StyledTextAreaContainer>
+
   )
+
 };
 
 export default TextArea;

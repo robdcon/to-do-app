@@ -5,8 +5,7 @@ export const StyledTextAreaContainer = styled.form`
  display: flex;
  position:absolute;
  overflow:hidden;
- bottom:0;
-//  margin-bottom:${(props) => props.active ? '0' : '-50px'};
+ bottom:50px;
  width:100%;
  width:100vw;
  height:2rem;
@@ -20,7 +19,7 @@ export const StyledToggleButton = styled.button`
  width:100px;
  height:100%;
  right:0;
- bottom:${(props) => props.active ? '0' : '50px'};
+ bottom:0;
 
 `;
 
