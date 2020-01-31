@@ -15,8 +15,9 @@ const App: React.FC = () => {
   
   const [toDoList, setToDoList] = useState(initialToDoList)
 
-  const addToDo = () => {
-    console.log('to do added')
+  const addToDo: AddToDo = (newToDo) => {
+    console.log('to do added');
+    setToDoList([...toDoList, {id: 0, text:newToDo, done:false}]);
   }
 
   const toggleToDo: ToggleToDo = selectedToDo => {
