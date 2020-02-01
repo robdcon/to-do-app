@@ -40,3 +40,20 @@ export const StyledCheckBox = styled.input`
  
 
 `
+
+export const StyledRemoveButton = styled.button`
+
+   position:absolute;
+   right:25px;
+   width:20px;
+   height:20px;
+   border-radius:100px;
+   background-color: #aaaaaa;
+   background-image: url(${redClose});
+   background-position: center;
+   backgroud-size:100%;
+   border:none;
+
+`
+
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledToDo, StyledCheckBox } from './ToDo.styles';
+import { StyledToDo, StyledCheckBox, StyledRemoveButton } from './ToDo.styles';
 import Button from '../Button';
 
 interface ToDoProps {
@@ -16,7 +16,7 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo}) => (
   >
     <StyledCheckBox type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
     {todo.text}
-    <button onClick={() => removeToDo(todo)} >REMOVE</button>
+    <StyledRemoveButton onClick={() => removeToDo(todo)} />
   </StyledToDo>
 );
 
