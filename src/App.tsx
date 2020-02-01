@@ -5,6 +5,7 @@ import TextArea from './components/TextArea';
 import ToDoContainer from './components/ToDoContainer';
 import ToDoList from './components/ToDoList';
 import ToDo from './components/ToDo';
+import {StyledApp} from './App.styles.js'
 
 const initialToDoList: Array<ToDo> = [
   {text:"todo one", done:false, id: null},
@@ -51,10 +52,10 @@ const App: React.FC = () => {
 
   return (
 
-    <div className="App">
+    <StyledApp className="App">
      <ToDoList todos={toDoList} toggleToDo={toggleToDo} removeToDo={removeToDo} />
      <TextArea addToDo={addToDo}/>
-    </div>
+    </StyledApp>
   );
 }
 
