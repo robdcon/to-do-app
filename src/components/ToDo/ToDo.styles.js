@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import greenTick from '../../assets/green-tick-circle.png'
+import redClose from '../../assets/red-x-circle.png'
 
 export const StyledToDo = styled.label`
-
+ position:relative;
  display: flex;
  justify-content:center;
  align-items:center;
@@ -13,6 +15,28 @@ export const StyledToDo = styled.label`
     box-shadow: inset 9px 9px 10px rgb(163,177,198,0.6), inset -9px -9px 10px  rgba(255,255,255, 0.5);
  }
 
+ &:before{
+   content:"";
+   position:absolute;
+   left:25px;
+   width:20px;
+   height:20px;
+   border-radius:100px;
+   background-color: #aaaaaa;
+   background-image: ${(props) => {return props.done ? `url(${greenTick})` : 'none'}};
+   background-position: center;
+   
+}
+
  text-decoration: ${props => props.done ? 'line-through' : 'none'}
 
 `;
+
+export const StyledCheckBox = styled.input`
+
+ opacity:0;
+ cursor:pointer;
+ position:absolute;
+ 
+
+`
