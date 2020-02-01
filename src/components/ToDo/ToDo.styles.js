@@ -48,10 +48,10 @@ export const StyledRemoveButton = styled.button`
    width:20px;
    height:20px;
    border-radius:100px;
-   background-color: #aaaaaa;
+   background-color: transparent;
    background-image: url(${redClose});
    background-position: center;
-   backgroud-size:100%;
+   background-size:cover;
    border:none;
 
 `
