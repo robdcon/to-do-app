@@ -15,13 +15,13 @@ it("renders without crashing", () => {
 it("renders button correctly", () => {
 
     const {getByTestId} = render(<Button text="Click Me"></Button>)
-    expect(getByTestId('add-btn')).toHaveTextContent("Click Me")
+    expect(getByTestId('std-btn')).toHaveTextContent("Click Me")
 })
 
 it("renders button correctly again", () => {
 
     const {getByTestId} = render(<Button text="Click Me Again"></Button>)
-    expect(getByTestId('add-btn')).toHaveTextContent("Click Me Again")
+    expect(getByTestId('std-btn')).toHaveTextContent("Click Me Again")
 })
 
 it("matches snapshot", () => {

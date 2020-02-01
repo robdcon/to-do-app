@@ -16,8 +16,19 @@ const App: React.FC = () => {
   const [toDoList, setToDoList] = useState(initialToDoList)
 
   const addToDo: AddToDo = (newToDo) => {
-    console.log('to do added');
+   
     setToDoList([...toDoList, {id: 0, text:newToDo, done:false}]);
+
+    console.log('to do added');
+  }
+
+  const removeToDo: RemoveToDo = (selectedToDo) => {
+    const modifiedList = toDoList.filter((todo)=>{
+        return todo != selectedToDo;
+    })
+    setToDoList(modifiedList);
+
+    console.log('to do removed');
   }
 
   const toggleToDo: ToggleToDo = selectedToDo => {
@@ -41,7 +52,7 @@ const App: React.FC = () => {
   return (
 
     <div className="App">
-     <ToDoList todos={toDoList} toggleToDo={toggleToDo} />
+     <ToDoList todos={toDoList} toggleToDo={toggleToDo} removeToDo={removeToDo} />
      <TextArea addToDo={addToDo}/>
     </div>
   );
