@@ -28,17 +28,16 @@ export const StyledToDo = styled.label`
  display: flex;
  justify-content:center;
  align-items:center;
- box-shadow:  9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px  rgba(255,255,255, 0.5);
+ box-shadow:  1px 1px 5px rgb(163,177,198,0.6), -1px -1px 5px  rgba(255,255,255, 0.5);
  min-width:300px;
  min-height:50px;
- transition: all 1s;
+ transform:scale(1);
+ transition: all .25s;
  
  &.active{
-    animation: ${boxShadowIn} 0.3s ease-in-out 0s forwards;
+   transform:scale(1.15);
  }
- &.inactive{
-   animation: ${boxShadowOut} 0.3s ease-in-out 0s forwards;
-}
+
 
  &:before{
    content:"";

@@ -9,7 +9,7 @@ flex-direction: column;
 justify-content:flex-start;
 align-items:center;
 overflow:hidden;
-background-color: #e0e5ec;
+background-color: #ffffff;
 padding: 5rem 0;
    
 `;
