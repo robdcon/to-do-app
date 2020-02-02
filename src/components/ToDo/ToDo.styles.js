@@ -79,4 +79,19 @@ export const StyledRemoveButton = styled.button`
 
 `
 
+export const StyledEditButton = styled.button`
+
+   position:absolute;
+   right:50px;
+   width:20px;
+   height:20px;
+   border-radius:100px;
+   background-color: transparent;
+   background-image: url(${greenTick});
+   background-position: center;
+   background-size:cover;
+   border:none;
+
+`
+
 

@@ -23,6 +23,10 @@ const App: React.FC = () => {
     console.log('to do added');
   }
 
+  const editToDo: EditToDo= () => {
+    console.log('working')
+  }
+
   const removeToDo: RemoveToDo = (selectedToDo) => {
     const modifiedList = toDoList.filter((todo)=>{
         return todo != selectedToDo;
@@ -53,7 +57,7 @@ const App: React.FC = () => {
   return (
 
     <StyledApp className="App">
-     <ToDoList todos={toDoList} toggleToDo={toggleToDo} removeToDo={removeToDo} />
+     <ToDoList todos={toDoList} toggleToDo={toggleToDo} removeToDo={removeToDo} editToDo={editToDo} />
      <TextArea addToDo={addToDo}/>
     </StyledApp>
   );

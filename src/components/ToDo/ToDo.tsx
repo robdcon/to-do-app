@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import { StyledToDo, StyledCheckBox, StyledRemoveButton } from './ToDo.styles';
+import { StyledToDo, StyledCheckBox, StyledRemoveButton, StyledEditButton } from './ToDo.styles';
 import Button from '../Button';
 
 interface ToDoProps {
-  todo: ToDo,
-  toggleToDo: ToggleToDo,
+  todo: ToDo
+  toggleToDo: ToggleToDo
   removeToDo: RemoveToDo
+  editToDo: EditToDo
 }
 
-const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo}) => {
+const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => {
 
   const [hover, setHover] = useState(false);
 
@@ -34,6 +35,7 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo}) => {
       <StyledCheckBox type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
       {todo.text}
       <StyledRemoveButton onClick={() => removeToDo(todo)} />
+      <StyledEditButton onClick={() => editToDo()} />
     </StyledToDo>
   )
 };
