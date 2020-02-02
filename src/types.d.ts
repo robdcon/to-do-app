@@ -13,5 +13,7 @@ type AddToDo = (newToDo: string) => void;
 
 type RemoveToDo = (selectedToDo: ToDo) => void;
 
-type EditToDo = () => void;
+//type EditToDo = (newToDo: ToDo) => void;
+
+type EditToDo = (selectedToDo: ToDo) => void;
 

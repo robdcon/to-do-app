@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, ChangeEvent, FormEvent} from 'react';
 import { StyledToDo, StyledCheckBox, StyledRemoveButton, StyledEditButton } from './ToDo.styles';
 import Button from '../Button';
+import TextArea from '../TextArea';
+
 
 interface ToDoProps {
   todo: ToDo
@@ -12,6 +14,8 @@ interface ToDoProps {
 const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => {
 
   const [hover, setHover] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [newToDo , setNewToDo] = useState('');
 
   const onMouseEnter = () => {
     setHover(true)
@@ -23,21 +27,79 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
     // console.log('leave')
   }
 
-  return (
-    <StyledToDo 
-      data-testid="test-todo" 
-      done={todo.done} 
-      className={`ToDoWrapper ${hover ? "active" : "inactive"}`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewToDo(e.target.value)
+  }
 
-    >
-      <StyledCheckBox type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
-      {todo.text}
-      <StyledRemoveButton onClick={() => removeToDo(todo)} />
-      <StyledEditButton onClick={() => editToDo()} />
-    </StyledToDo>
-  )
+  const handleSubmit  = (e: FormEvent) => {
+
+    e.preventDefault();
+    editToDo({...todo, text:newToDo})
+
+  }
+
+  // EDITING MODE
+  const setEditingMode = () => {
+    setEditing(true)
+  }
+
+  const renderComponent = () => {
+
+    if(!editing) { 
+      return (
+        <StyledToDo 
+          data-testid="test-todo" 
+          done={todo.done} 
+          className={`ToDoWrapper ${hover ? "active" : "inactive"}`}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+  
+        >
+          <StyledCheckBox type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
+          {todo.text}
+          <StyledRemoveButton onClick={() => removeToDo(todo)} />
+          <StyledEditButton onClick={() => setEditingMode()} />
+        </StyledToDo>
+      )
+    } else {
+     
+        return (
+          <StyledToDo 
+            data-testid="test-todo" 
+            done={todo.done} 
+            className={`ToDoWrapper ${hover ? "active" : "inactive"}`}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+    
+          >
+          <form onSubmit={handleSubmit}><input type="text" onChange={handleChange} value={newToDo}  placeholder="What's to do?..." /><button type="submit">EDIT TO DO</button></form>
+         
+          </StyledToDo>
+        )
+      }
+    
+
+  }
+
+ 
+    return (
+
+      renderComponent()
+      // <StyledToDo 
+      //   data-testid="test-todo" 
+      //   done={todo.done} 
+      //   className={`ToDoWrapper ${hover ? "active" : "inactive"}`}
+      //   onMouseEnter={onMouseEnter}
+      //   onMouseLeave={onMouseLeave}
+
+      // >
+      //   <StyledCheckBox type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
+      //   {todo.text}
+      //   <StyledRemoveButton onClick={() => removeToDo(todo)} />
+      //   <StyledEditButton onClick={() => editToDo()} />
+      // </StyledToDo>
+    )
+  
 };
 
 export default ToDo;

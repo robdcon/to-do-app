@@ -10,6 +10,7 @@ interface ToDoListProps {
     toggleToDo: ToggleToDo
     removeToDo: RemoveToDo
     editToDo: EditToDo
+  
 }
 
 const ToDoList: React.FC<ToDoListProps> = ({ todos, toggleToDo, removeToDo, editToDo}) => {
@@ -18,15 +19,11 @@ const ToDoList: React.FC<ToDoListProps> = ({ todos, toggleToDo, removeToDo, edit
       <StyledToDoList>
         {
           todos.map((todo) => {
-            return <li key={todo.text}><ToDo todo={todo} toggleToDo={toggleToDo} removeToDo={removeToDo} editToDo={editToDo} /></li>
+            return <li key={todo.text}><ToDo todo={todo} toggleToDo={toggleToDo} removeToDo={removeToDo} editToDo={editToDo}/></li>
           })
         }
       </StyledToDoList>
     )
 }
-
- 
-
-
 
 export default ToDoList;

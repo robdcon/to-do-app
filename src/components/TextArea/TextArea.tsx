@@ -7,10 +7,6 @@ interface TextAreaProps {
   addToDo: AddToDo
 }
 
-const Input = React.forwardRef<HTMLInputElement>((props, ref) => (
-  <input ref={ref} className="TextInput" />
-));
-
 const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
   const [newToDo , setNewToDo] = useState('');
@@ -32,7 +28,6 @@ const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
   <StyledTextAreaContainer className="TextAreaWrapper" onSubmit={handleSubmit}>
     <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What's to do?..." onChange={handleChange} />
-    <Input />
     <StyledToggleButton type="submit" >SAVE</StyledToggleButton>
   </StyledTextAreaContainer>
 
