@@ -15,6 +15,7 @@ const initialToDoList: Array<ToDo> = [
 const App: React.FC = () => {
   
   const [toDoList, setToDoList] = useState(initialToDoList)
+  const textAreaInput = React.createRef();
 
   const addToDo: AddToDo = (newToDo) => {
    
@@ -24,7 +25,7 @@ const App: React.FC = () => {
   }
 
   const editToDo: EditToDo= () => {
-    console.log('working')
+    console.log('REF: ', textAreaInput);
   }
 
   const removeToDo: RemoveToDo = (selectedToDo) => {

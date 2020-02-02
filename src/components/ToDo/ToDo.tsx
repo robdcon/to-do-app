@@ -15,12 +15,12 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
 
   const onMouseEnter = () => {
     setHover(true)
-   console.log('enter')
+  //  console.log('enter')
   }
 
   const onMouseLeave = () => {
     setHover(false)
-    console.log('leave')
+    // console.log('leave')
   }
 
   return (
