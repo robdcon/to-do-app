@@ -46,7 +46,6 @@ export const StyledToDo = styled.label`
    width:20px;
    height:20px;
    border-radius:100px;
-   background-color: #aaaaaa;
    background-image: ${(props) => {return props.done ? `url(${greenTick})` : 'none'}};
    background-position: center;
    

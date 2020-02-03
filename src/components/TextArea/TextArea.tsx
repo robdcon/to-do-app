@@ -10,16 +10,19 @@ interface TextAreaProps {
 const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
   const [newToDo , setNewToDo] = useState('');
- 
+  
+  //SET VALUE OF INPUT ELEMENT USING HOOKS
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
     setNewToDo(e.target.value)
    
   }
 
+  // SUBMIT FOR TO CREATE NEW TODO
   const handleSubmit  = (e: FormEvent<HTMLButtonElement>) => {
 
     e.preventDefault();
+    console.log(newToDo.length)
     addToDo(newToDo);
 
   }
@@ -28,7 +31,7 @@ const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
   <StyledTextAreaContainer className="TextAreaWrapper" onSubmit={handleSubmit}>
     <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What's to do?..." onChange={handleChange} />
-    <StyledToggleButton type="submit" >SAVE</StyledToggleButton>
+    <StyledToggleButton type="submit">SAVE</StyledToggleButton>
   </StyledTextAreaContainer>
 
   )
