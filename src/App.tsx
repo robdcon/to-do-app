@@ -168,7 +168,7 @@ class App extends Component<{}, AppState> {
 
   render() {
     return (
-      <StyledApp className="App">
+      <StyledApp className="App" tabindex="0">
         <ToDoList todos={this.state.toDoList} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo} />
         <TextArea addToDo={this.addToDo}/>
       </StyledApp>

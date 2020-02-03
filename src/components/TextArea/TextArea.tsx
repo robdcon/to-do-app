@@ -34,7 +34,8 @@ const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
   return (
 
-  <StyledTextAreaContainer data-testid="test-textarea" className="TextAreaWrapper" onSubmit={handleSubmit}>
+  <StyledTextAreaContainer tabindex="0" data-testid="test-textarea" className="TextAreaWrapper" onSubmit={handleSubmit}>
+    <label htmlFor="todo-text">New To Do</label>
     <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What's to do?..." onChange={handleChange} />
     <StyledToggleButton data-testid="todo-submit-btn" type="submit">SAVE</StyledToggleButton>
   </StyledTextAreaContainer>

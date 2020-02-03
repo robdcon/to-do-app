@@ -4,20 +4,20 @@ import redClose from '../../assets/red-x-circle.png';
 
 export const StyledToDo = styled.label`
 
+ box-sizing:border-box;
  position:relative;
  display: flex;
  justify-content:center;
  align-items:center;
  box-shadow:  1px 1px 5px rgb(163,177,198,0.6), -1px -1px 5px  rgba(255,255,255, 0.5);
+ max-width:800px;
  min-width:300px;
  min-height:50px;
- transform:scale(1);
- transition: all .25s;
  
  &.active{
-   transform:scale(1.15);
+  
+   border: 1px solid blue;
  }
-
 
  &:before{
    content:"";

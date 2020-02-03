@@ -49,14 +49,19 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
     if(!editing) { 
       return (
         <StyledToDo 
+
           data-testid="test-todo" 
           done={todo.done} 
           className={`ToDoWrapper ${hover ? "active" : "inactive"}`}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
+          onFocus={onMouseEnter}
+          onBlur={onMouseLeave}
+          htmlFor={ `checkbox-${todo.id}`}
+         
   
         >
-          <StyledCheckBox type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
+          <StyledCheckBox id={ `checkbox-${todo.id}`} name="checkbox" type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
           {todo.text}
           <StyledRemoveButton onClick={() => removeToDo(todo)} />
           <StyledEditButton onClick={() => toggleEditingMode()} />
@@ -71,9 +76,16 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
             className={`ToDoWrapper ${hover ? "active" : "inactive"}`}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            onFocus={onMouseEnter}
+            onBlur={onMouseLeave}
     
           >
-          <form onSubmit={handleSubmit}><input type="text" onChange={handleChange} value={newToDo}  placeholder="What's to do?..." /><button type="submit">EDIT TO DO</button></form>
+
+          <form onSubmit={handleSubmit} aria-label="Edit To Do Text">
+            <label htmlFor="edit-todo">Edit To Do</label>
+            <input type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo}  placeholder="What's to do?..." />
+            <button type="submit">SAVE</button>
+          </form>
          
           </StyledToDo>
         )
