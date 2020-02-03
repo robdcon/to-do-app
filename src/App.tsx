@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextArea from './components/TextArea';
@@ -78,6 +78,51 @@ const App: React.FC = () => {
     setToDoList(newToDos);
 
   }
+
+  // CHECK FOR LOCAL STORAGE
+  const checkLocalStorage = () =>
+  {
+      if (typeof localStorage !== 'undefined') {
+          try {
+              localStorage.setItem('feature_test', 'yes');
+              if (localStorage.getItem('feature_test') === 'yes') {
+                  localStorage.removeItem('feature_test');
+                  // localStorage is enabled
+                  console.log('Local Enabled')
+                  return true
+              } else {
+                  // localStorage is disabled
+                  console.log('Local Disabled')
+                  return false
+              }
+          } catch(e) {
+              // localStorage is disabled
+              console.log('Local Disabled', e)
+              return false
+          }
+      } else {
+          // localStorage is not available
+          console.log('Local Not Available')
+          return false
+      }
+  }
+
+  // SAVE LIST TO LOCAL STORAGE
+  const saveToLocalStorage = () =>
+  {
+    if(checkLocalStorage() === true)
+    {
+      const list = {id:uniqueId, list: [...toDoList]};
+      const jsonList = JSON.stringify(list)
+      localStorage.setItem('to-do-list', jsonList);
+      console.log('saved')
+    }
+      
+  }
+
+  useEffect(() => {
+    saveToLocalStorage();
+  })
 
   return (
 
