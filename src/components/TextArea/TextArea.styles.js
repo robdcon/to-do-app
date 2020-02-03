@@ -5,13 +5,13 @@ export const StyledTextAreaContainer = styled.form`
  display: flex;
  justify-content:center;
  align-items:center;
- position:absolute;
+ position:fixed;
  bottom: 0;
  padding: 1rem 2rem 1rem 2rem;
  width:100%;
- width:100vw;
  height:2rem;
  background-color:#eeeeee;
+ 
 
 `;
 
