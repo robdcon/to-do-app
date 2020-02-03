@@ -24,8 +24,6 @@ type AppState = {
   uniqueId: number
 }
 
-
-
 class App extends Component<{}, AppState> {
 
   constructor(props: initialProps) { 
@@ -48,13 +46,14 @@ class App extends Component<{}, AppState> {
   // ADD
   addToDo: AddToDo = (newToDo) => {
    
-    const id = this.getUniqueId();
-    this.setState({toDoList:[...this.state.toDoList, {id: id, text:newToDo, done:false}]});
-
-    console.log('to do added');
+    if(newToDo) {
+      const id = this.getUniqueId();
+      this.setState({toDoList:[...this.state.toDoList, {id: id, text:newToDo, done:false}]});
+    }
+    
   }
 
-  // //EDIT 
+  //EDIT 
   editToDo: EditToDo = selectedToDo => {
 
     const newToDoList = this.state.toDoList.map((todo) => {
@@ -149,7 +148,7 @@ class App extends Component<{}, AppState> {
    
     if(storedList) {
       let initialList: LocalToDoList = JSON.parse(storedList);
-      this.setState({toDoList:initialList.list});
+      this.setState({toDoList:initialList.list, uniqueId:initialList.id});
     }
    
     console.log('Component Mounted')
@@ -161,15 +160,17 @@ class App extends Component<{}, AppState> {
     this.saveToLocalStorage();
     console.log('Component Updated')
   }
-  componentDidUnmount() {
+
+
+  componentWillUnmount() {
     console.log('Componernt Unmounted')
   }
 
   render() {
     return (
       <StyledApp className="App">
-      <ToDoList todos={this.state.toDoList} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo} />
-      <TextArea addToDo={this.addToDo}/>
+        <ToDoList todos={this.state.toDoList} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo} />
+        <TextArea addToDo={this.addToDo}/>
       </StyledApp>
     );
   }

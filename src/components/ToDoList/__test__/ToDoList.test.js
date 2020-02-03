@@ -1,21 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ToDoList from './../ToDoList';
+import Button from '../../Button';
 import { render, cleanup, toBeInTheDocument } from '@testing-library/react';
 import renderer from 'react-test-renderer'
 
+// CHANGE TIMEOUT TO AVOID ERROR
+//jest.setTimeout(60000); // Not Working
+
+afterEach(cleanup);
+
+it("renders button without crashing", () => {
+
+    const div = document.createElement('div')
+    ReactDOM.render(<Button></Button>, div)
+})
+
 const initialToDoList = [
-    {text:"todo one", done:false, id: null},
-    {text:"todo two",  done:false, id: null}
+    {text:"todo one", done:false, id: 0},
+    {text:"todo two",  done:true, id: 1}
   ]
 
-it("renders without crashing", () => {
+// test("renders ToDoList without crashing", ({todos}) => {
 
-    const ul = document.createElement('ul');
-    ReactDOM.render(<ToDoList />, ul);
-})
+//     const div = document.createElement('div'); 
+//     ReactDOM.render(<ToDoList todos={initialToDoList} />, div)
 
-it("renders todo list component correctly", () => {
-    const {getByTestId} = render(<ToDoList todos={initialToDoList} ></ToDoList>) 
-   expect(getByTestId('test-todo-list'))
-})
+
+// })
+
+// it("renders ToDoList component correctly", () => {
+//     const {getByTestId} = render(<ToDoList todos={initialToDoList} ></ToDoList>) 
+//    expect(getByTestId('test-todo-list')).toBe()
+// })

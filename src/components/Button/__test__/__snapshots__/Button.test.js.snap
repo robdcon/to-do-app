@@ -3,7 +3,7 @@
 exports[`matches snapshot 1`] = `
 <div
   className="ButtonWrapper"
-  data-testid="add-btn"
+  data-testid="std-btn"
 >
   <button>
     save

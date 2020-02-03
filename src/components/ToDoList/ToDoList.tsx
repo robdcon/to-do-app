@@ -16,7 +16,7 @@ interface ToDoListProps {
 const ToDoList: React.FC<ToDoListProps> = ({ todos, toggleToDo, removeToDo, editToDo}) => {
 
    return ( 
-      <StyledToDoList>
+      <StyledToDoList id="test-todo-list">
         {
           todos.map((todo) => {
             return <li key={`${todo.id}`}><ToDo todo={todo} toggleToDo={toggleToDo} removeToDo={removeToDo} editToDo={editToDo}/></li>

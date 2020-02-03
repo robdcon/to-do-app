@@ -22,16 +22,21 @@ const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
   const handleSubmit  = (e: FormEvent<HTMLButtonElement>) => {
 
     e.preventDefault();
-    console.log(newToDo.length)
-    addToDo(newToDo);
+    // Check if newToDo has text
+    if(newToDo)
+    { 
+      console.log("New To Do:", newToDo);
+      addToDo(newToDo);
+    }
+   
 
   }
 
   return (
 
-  <StyledTextAreaContainer className="TextAreaWrapper" onSubmit={handleSubmit}>
+  <StyledTextAreaContainer data-testid="test-textarea" className="TextAreaWrapper" onSubmit={handleSubmit}>
     <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What's to do?..." onChange={handleChange} />
-    <StyledToggleButton type="submit">SAVE</StyledToggleButton>
+    <StyledToggleButton data-testid="todo-submit-btn" type="submit">SAVE</StyledToggleButton>
   </StyledTextAreaContainer>
 
   )
