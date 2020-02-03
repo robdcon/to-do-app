@@ -7,9 +7,8 @@ import ToDoList from './components/ToDoList';
 import ToDo from './components/ToDo';
 import {StyledApp} from './App.styles.js'
 
-const initialToDoList: Array<ToDo> = [
-  
-]
+
+const initialToDoList: Array<ToDo> = []
 
 const App: React.FC = () => {
   
@@ -53,7 +52,6 @@ const App: React.FC = () => {
 
   }
  
-
   // REMOVE
   const removeToDo: RemoveToDo = (selectedToDo) => {
     const modifiedList = toDoList.filter((todo)=>{
@@ -119,7 +117,7 @@ const App: React.FC = () => {
     }
       
   }
-
+  
   useEffect(() => {
     saveToLocalStorage();
   })

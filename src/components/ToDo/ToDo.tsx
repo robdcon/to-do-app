@@ -35,12 +35,13 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
 
     e.preventDefault();
     editToDo({...todo, text:newToDo})
+    toggleEditingMode();
 
   }
 
   // EDITING MODE
-  const setEditingMode = () => {
-    setEditing(true)
+  const toggleEditingMode = () => {
+    setEditing(!editing);
   }
 
   const renderComponent = () => {
@@ -58,7 +59,7 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
           <StyledCheckBox type="checkbox" checked={todo.done} onChange={() => toggleToDo(todo)} />
           {todo.text}
           <StyledRemoveButton onClick={() => removeToDo(todo)} />
-          <StyledEditButton onClick={() => setEditingMode()} />
+          <StyledEditButton onClick={() => toggleEditingMode()} />
         </StyledToDo>
       )
     } else {
