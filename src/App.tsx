@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextArea from './components/TextArea';
@@ -7,36 +7,57 @@ import ToDoList from './components/ToDoList';
 import ToDo from './components/ToDo';
 import {StyledApp} from './App.styles.js'
 
+interface LocalToDoList {
+  id: number
+  list: Array<ToDo>
+}
 
-const initialToDoList: Array<ToDo> = []
+interface initialProps {
+  uniqueId: number
+  toDoList: Array<ToDo>
+}
+// KEY FOR STORING AND RETRIEVING LIST FROM LOCAL STORAGE
+const localToDoListKey = "to-do-list";
 
-const App: React.FC = () => {
-  
-  const [toDoList, setToDoList] = useState(initialToDoList)
-  const [uniqueId, setUniqueId] = useState(0);
+type AppState = {
+  toDoList:Array<ToDo>
+  uniqueId: number
+}
+
+
+
+class App extends Component<{}, AppState> {
+
+  constructor(props: initialProps) { 
+    super(props);
+    this.state = {
+      uniqueId:0,
+      toDoList:[]
+    }
+  }
 
   // CREATE UNIQUE ID
-  const getUniqueId = () => {
+  getUniqueId = () => {
 
-    const id = uniqueId + 1;
-    setUniqueId(id)
+    const id = this.state.uniqueId + 1;
+    this.setState({uniqueId:id});
     return id;
 
   }
 
   // ADD
-  const addToDo: AddToDo = (newToDo) => {
+  addToDo: AddToDo = (newToDo) => {
    
-    const id = getUniqueId();
-    setToDoList([...toDoList, {id: id, text:newToDo, done:false}]);
+    const id = this.getUniqueId();
+    this.setState({toDoList:[...this.state.toDoList, {id: id, text:newToDo, done:false}]});
 
     console.log('to do added');
   }
 
-  //EDIT 
-  const editToDo: EditToDo = selectedToDo => {
+  // //EDIT 
+  editToDo: EditToDo = selectedToDo => {
 
-    const newToDos = toDoList.map((todo) => {
+    const newToDoList = this.state.toDoList.map((todo) => {
       console.log(todo.id)
         if(todo.id === selectedToDo.id) {
           console.log('found')
@@ -48,22 +69,22 @@ const App: React.FC = () => {
         return todo;
     })
    
-    setToDoList(newToDos);
+    this.setState({toDoList:newToDoList});
 
   }
  
   // REMOVE
-  const removeToDo: RemoveToDo = (selectedToDo) => {
-    const modifiedList = toDoList.filter((todo)=>{
+  removeToDo: RemoveToDo = (selectedToDo) => {
+    const modifiedList = this.state.toDoList.filter((todo)=> {
         return todo != selectedToDo;
     })
-    setToDoList(modifiedList);
+    this.setState({toDoList:modifiedList});
 
   }
 
   // TOGGLE DONE
-  const toggleToDo: ToggleToDo = selectedToDo => {
-    const newToDos= toDoList.map((todo) => {
+  toggleToDo: ToggleToDo = selectedToDo => {
+    const newToDoList= this.state.toDoList.map((todo) => {
         if(todo === selectedToDo) {
           return {
             ...todo,
@@ -73,13 +94,13 @@ const App: React.FC = () => {
         return todo;
     })
 
-    setToDoList(newToDos);
+    this.setState({toDoList:newToDoList});
 
   }
 
   // CHECK FOR LOCAL STORAGE
-  const checkLocalStorage = () =>
-  {
+  checkLocalStorage() {
+
       if (typeof localStorage !== 'undefined') {
           try {
               localStorage.setItem('feature_test', 'yes');
@@ -106,29 +127,52 @@ const App: React.FC = () => {
   }
 
   // SAVE LIST TO LOCAL STORAGE
-  const saveToLocalStorage = () =>
-  {
-    if(checkLocalStorage() === true)
+  saveToLocalStorage = () => {
+    if(this.checkLocalStorage() === true)
     {
-      const list = {id:uniqueId, list: [...toDoList]};
+      const list = {id:this.state.uniqueId, list: [...this.state.toDoList]};
       const jsonList = JSON.stringify(list)
-      localStorage.setItem('to-do-list', jsonList);
+      localStorage.setItem(`${localToDoListKey}`, jsonList);
       console.log('saved')
     }
       
   }
   
-  useEffect(() => {
-    saveToLocalStorage();
-  })
+  // useEffect(() => {
+  //  
+  // })
 
-  return (
+  // FIRST RENDER
+  componentDidMount() {
 
-    <StyledApp className="App">
-     <ToDoList todos={toDoList} toggleToDo={toggleToDo} removeToDo={removeToDo} editToDo={editToDo} />
-     <TextArea addToDo={addToDo}/>
-    </StyledApp>
-  );
+    const storedList = localStorage.getItem(`${localToDoListKey}`) || '';
+   
+    if(storedList) {
+      let initialList: LocalToDoList = JSON.parse(storedList);
+      this.setState({toDoList:initialList.list});
+    }
+   
+    console.log('Component Mounted')
+  }
+
+  // SAVE TO LOCAL ON EACH MODIFICATION
+  componentDidUpdate() {
+
+    this.saveToLocalStorage();
+    console.log('Component Updated')
+  }
+  componentDidUnmount() {
+    console.log('Componernt Unmounted')
+  }
+
+  render() {
+    return (
+      <StyledApp className="App">
+      <ToDoList todos={this.state.toDoList} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo} />
+      <TextArea addToDo={this.addToDo}/>
+      </StyledApp>
+    );
+  }
 }
 
 export default App;
