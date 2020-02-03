@@ -1,15 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-//import { Test } from './Button.styles';
+import { StyledButton } from './Button.styles';
 
 interface Props {
   text: string,
-  handleClick: () => void
+  type?:string,
+  handleClick?: () => void,
+  handleSubmit?: () => void
 }
 
 const Button:React.FC<Props> = (props) => (
-  <div data-testid="std-btn" className="ButtonWrapper">
-    <button onClick={props.handleClick}>{props.text}</button>
+  <div className="ButtonWrapper">
+    <StyledButton data-testid="std-btn" type={props.type} onClick={props.handleClick}>
+      {props.text}
+    </StyledButton>
   </div>
 );
 

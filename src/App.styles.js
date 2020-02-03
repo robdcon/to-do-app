@@ -8,8 +8,8 @@ display: flex;
 flex-direction: column;
 justify-content:flex-start;
 align-items:center;
-overflow:hidden;
 background-color: #ffffff;
-padding: 5rem 0;
+padding: 5rem 2rem;
+box-sizing: border-box;
    
 `;
