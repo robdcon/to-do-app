@@ -1,15 +1,8 @@
-import React, { Component, useState, useEffect, createContext, useMemo, useCallback } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState, useEffect, createContext, useMemo, useCallback, useContext } from 'react';
 import TextArea from './components/TextArea';
-import ToDoContainer from './components/ToDoContainer';
 import ToDoList from './components/ToDoList';
 import ToDo from './components/ToDo';
-import {StyledApp} from './App.styles.js'
-
-// CREATE APP CONTEXT FOR STATE MANAGEMENT
-const ToDoAPI = createContext(null);
-
+import {StyledApp} from './App.styles.js';
 
 interface LocalToDoList {
   id: number
@@ -28,25 +21,15 @@ type AppState = {
   uniqueId: number
 }
 
-// const ToDoApp = () => {
+const initialToDoList = [
+  {id:1, text:'one', done:false},
+  {id:2, text:'two', done:false}
+]
 
-//   const [toDos, setToDos] = useState([]);
-//   const [toUniqueId, setUniqueId] = useState(0); 
-//   const addToDo: AddToDo = useCallback(() => setToDos(prevToDos => [...prevToDos, {}]), []);
-//   const removeToDo: RemoveToDo = useCallback(() => setToDos([]), []);
 
-//   const getApi = useMemo(() => ({addToDo, removeToDo}),[]);
-
-//   return(
-//     <div className="toDoAppWrapper">
-
-//       <ToDoAPI.Provider value={getApi()}>
-
-//       </ToDoAPI.Provider>
-
-//     </div>
-//   )
-// }
+   ///////////////////////////////\
+  ///   ORIGINAL APP SET UP   ///  \
+ ///////////////////////////////____\
 
 class App extends Component<{}, AppState> {
 
@@ -57,7 +40,6 @@ class App extends Component<{}, AppState> {
       toDoList:[]
     }
   }
-
 
   // CREATE UNIQUE ID
   getUniqueId = () => {
@@ -227,6 +209,7 @@ class App extends Component<{}, AppState> {
 
   render() {
     return (
+     
       <StyledApp className="App">
         <ToDoList >
         {
