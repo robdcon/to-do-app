@@ -228,14 +228,18 @@ class App extends Component<{}, AppState> {
   render() {
     return (
       <StyledApp className="App" tabindex="0">
-        <ToDoList todos={this.state.toDoList} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo} >
+        <ToDoList >
         {
           this.state.toDoList.map((todo) => {
             return (
-              <li key={`${todo.id}`}>
-                <ToDo todo={todo} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo}/>
-              </li>
-            )
+            <li key={`${todo.id}`}>
+              <ToDo
+                todo={todo} 
+                toggleToDo={this.toggleToDo} 
+                removeToDo={this.removeToDo} 
+                editToDo={this.editToDo}
+              />
+            </li>)
           })
         }
         </ToDoList>

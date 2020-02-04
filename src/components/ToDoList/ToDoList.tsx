@@ -4,24 +4,11 @@ import ToDo from '../ToDo'
 import { StyledToDoList } from './ToDoList.styles';
 
 
-interface ToDoListProps {
-
-    todos: Array<ToDo>
-    toggleToDo: ToggleToDo
-    removeToDo: RemoveToDo
-    editToDo: EditToDo
-  
-}
-
-const ToDoList: React.FC<ToDoListProps> = ({ todos, toggleToDo, removeToDo, editToDo}) => {
+const ToDoList: React.FC = ({ children }) => {
 
    return ( 
       <StyledToDoList id="test-todo-list">
-        {
-          todos.map((todo) => {
-            return <li key={`${todo.id}`}><ToDo todo={todo} toggleToDo={toggleToDo} removeToDo={removeToDo} editToDo={editToDo}/></li>
-          })
-        }
+       {children}
       </StyledToDoList>
     )
 }

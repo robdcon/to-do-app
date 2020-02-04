@@ -1,5 +1,5 @@
 import React, {useState, ChangeEvent, FormEvent} from 'react';
-import { StyledToDo, StyledCheckBox, StyledRemoveButton, StyledEditButton } from './ToDo.styles';
+import { StyledToDo, StyledCheckBox, StyledRemoveButton, StyledEditButton, StyledEditForm } from './ToDo.styles';
 import Button from '../Button';
 import TextArea from '../TextArea';
 
@@ -30,35 +30,33 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
   const handleFocus = (e:KeyboardEvent) => {
     
     e = e || window.event;
-    let direction;
+    let keyevent;
     switch(e.which || e.keyCode) {
       case 37: // left
-        direction = 'LEFT';
+        keyevent = 'LEFT';
       break;
 
       case 38: // up
-        direction = 'UP';
+        keyevent = 'UP';
       break;
 
       case 39: // right
-        direction = 'RIGHT';
+        keyevent = 'RIGHT';
       break;
 
       case 40: // down
-        direction = 'DOWN';
+        keyevent = 'DOWN';
       break;
 
       case 13: // down
-        direction = 'ENTER';
+        keyevent = 'ENTER';
         toggleToDo(todo);
       break;
 
       default: return; // exit this handler for other keys
     }
 
-      console.log(direction)
-
-
+      console.log(keyevent)
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -116,11 +114,13 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
     
           >
           
-          <form onSubmit={handleSubmit} aria-label="Edit To Do Text">
-            <label htmlFor="edit-todo" aria-hidden="true">Edit To Do</label>
+          <StyledEditForm onSubmit={handleSubmit} aria-label="Edit To Do Text">
+            <label htmlFor="edit-todo" aria-hidden="true">
             <input type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo}  placeholder="What's to do?..." />
-            <button type="submit">SAVE</button>
-          </form>
+            </label>
+            <Button text="SAVE" type="submit" />
+            <Button text="CANCEL" handleClick={toggleEditingMode} />
+          </StyledEditForm>
          
           </StyledToDo>
         )

@@ -10,12 +10,12 @@ export const StyledToDo = styled.label`
  justify-content:center;
  align-items:center;
  box-shadow:  1px 1px 5px rgb(163,177,198,0.6), -1px -1px 5px  rgba(255,255,255, 0.5);
+ width:100%;
  max-width:800px;
  min-width:300px;
  min-height:50px;
  
  &.active{
-  
    border: 1px solid blue;
  }
 
@@ -26,8 +26,9 @@ export const StyledToDo = styled.label`
    width:20px;
    height:20px;
    border-radius:100px;
-   background-image: ${(props) => {return props.done ? `url(${greenTick})` : 'none'}};
+   background-image: ${(props) => {return props.done ? `url(${greenTick})` :  `url(${redClose})`}};
    background-position: center;
+   background-size:cover;
    
 }
 
@@ -41,7 +42,7 @@ export const StyledCheckBox = styled.input`
  cursor:pointer;
  position:absolute;
  
-`
+`;
 
 export const StyledRemoveButton = styled.button`
 
@@ -56,7 +57,7 @@ export const StyledRemoveButton = styled.button`
    background-size:cover;
    border:none;
 
-`
+`;
 
 export const StyledEditButton = styled.button`
 
@@ -70,6 +71,17 @@ export const StyledEditButton = styled.button`
    background-position: center;
    background-size:cover;
    border:none;
+
+`;
+
+export const StyledEditForm = styled.form`
+
+display: flex;
+justify-content:center;
+align-items:center;
+input{
+   heigth:100%;
+}
 
 `
 
