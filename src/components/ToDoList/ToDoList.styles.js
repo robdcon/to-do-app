@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledToDoList = styled.ul`
 
-    width: 80%;
-    max-width: 100%;
+    width: 90%;
+    max-width: 600px;
     margin:0 auto;
     padding:0;
     li {

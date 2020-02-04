@@ -2,6 +2,7 @@ import React, {useState, ChangeEvent, FormEvent} from 'react';
 import { StyledToDo, StyledCheckBox, StyledRemoveButton, StyledEditButton, StyledEditForm } from './ToDo.styles';
 import Button from '../Button';
 import TextArea from '../TextArea';
+import { MdCheckCircle, MdEdit, MdRemoveCircle } from "react-icons/md";
 
 
 interface ToDoProps {
@@ -102,10 +103,12 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
          
   
         >
-          <StyledCheckBox tabindex="0" id={ `checkbox-${todo.id}`} name="checkbox" type="checkbox" checked={todo.done} onBlur={handleCheckboxFocus} onFocus={handleCheckboxFocus} onChange={() => toggleToDo(todo)} />
+          <MdCheckCircle style={{position:'absolute', left:'30px', border: `${checkboxFocus ? '1px solid blue' : 'none'}`}} className="todo-done-check" color={todo.done ? '#03c503' : '#c1c1c1'}/>
+          <StyledCheckBox tabindex="0" id={ `checkbox-${todo.id}`} name="checkbox" type="checkbox" checked={todo.done} onBlur={handleCheckboxFocus} onFocus={handleCheckboxFocus} onChange={() => toggleToDo(todo)}>
+            </StyledCheckBox>
           {todo.text}
-          <StyledRemoveButton onClick={() => removeToDo(todo)} />
-          <StyledEditButton onClick={() => toggleEditingMode()} />
+          <StyledRemoveButton onClick={() => removeToDo(todo)} ><MdRemoveCircle style={{color:'#ff0000'}} /></StyledRemoveButton>
+          <StyledEditButton onClick={() => toggleEditingMode()}><MdEdit style={{color:'#000000'}}/></StyledEditButton>
         </StyledToDo>
       )
     } else {
