@@ -32,14 +32,14 @@ it("renders ToDo correctly", () => {
     expect(getByTestId('test-todo')).toHaveTextContent("test to do one")
 })
 
-it("displays correctly when marked done", () => {
+// it("displays correctly when marked done", () => {
     
-    const div = document.createElement('div');
-    ReactDOM.render(<ToDo todo={testToDoDone}></ToDo>, div);
+//     const div = document.createElement('div');
+//     ReactDOM.render(<ToDo todo={testToDoDone}></ToDo>, div);
 
-    const toDoClass = ToDo().type.styledComponentId;
-    const toDoInstance = document.getElementsByClassName(toDoClass)[0];
-    const style = window.getComputedStyle(toDoInstance);
-    expect(style.textDecoration).toBe('line-through');
+//     const toDoClass = ToDo().type.styledComponentId;
+//     const toDoInstance = document.getElementsByClassName(toDoClass)[0];
+//     const style = window.getComputedStyle(toDoInstance);
+//     expect(style.textDecoration).toBe('line-through');
 
-})
+// })

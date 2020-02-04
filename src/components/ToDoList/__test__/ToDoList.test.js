@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ToDoList from './../ToDoList';
-import Button from '../../Button';
 import { render, cleanup, toBeInTheDocument } from '@testing-library/react';
 import renderer from 'react-test-renderer'
 
@@ -10,10 +9,10 @@ import renderer from 'react-test-renderer'
 
 afterEach(cleanup);
 
-it("renders button without crashing", () => {
+it("renders ToDoList without crashing", () => {
 
     const div = document.createElement('div')
-    ReactDOM.render(<Button></Button>, div)
+    render(<ToDoList></ToDoList>, div)
 })
 
 const initialToDoList = [
