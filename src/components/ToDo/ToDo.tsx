@@ -80,7 +80,7 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
 
     if(!editing) { 
       return (
-        <StyledToDo 
+        <StyledToDo
 
           data-testid="test-todo" 
           done={todo.done} 
@@ -111,6 +111,7 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
             onMouseLeave={onMouseLeave}
             onFocus={onMouseEnter}
             onBlur={onMouseLeave}
+            onKeyDown={toggleToDo}
     
           >
           
