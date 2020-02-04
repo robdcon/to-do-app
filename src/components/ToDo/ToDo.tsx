@@ -103,12 +103,12 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
          
   
         >
-          <MdCheckCircle style={{position:'absolute', left:'30px', border: `${checkboxFocus ? '1px solid blue' : 'none'}`}} className="todo-done-check" color={todo.done ? '#03c503' : '#c1c1c1'}/>
+          <MdCheckCircle size="1.15rem" style={{position:'absolute', left:'30px', border: `${checkboxFocus ? '1px solid blue' : 'none'}`}} className="todo-done-check" color={todo.done ? '#03c503' : '#c1c1c1'}/>
           <StyledCheckBox tabindex="0" id={ `checkbox-${todo.id}`} name="checkbox" type="checkbox" checked={todo.done} onBlur={handleCheckboxFocus} onFocus={handleCheckboxFocus} onChange={() => toggleToDo(todo)}>
             </StyledCheckBox>
           {todo.text}
-          <StyledRemoveButton onClick={() => removeToDo(todo)} ><MdRemoveCircle style={{color:'#ff0000'}} /></StyledRemoveButton>
-          <StyledEditButton onClick={() => toggleEditingMode()}><MdEdit style={{color:'#000000'}}/></StyledEditButton>
+          <StyledRemoveButton onClick={() => removeToDo(todo)} ><MdRemoveCircle  size="1.15rem" style={{color:'#ff0000'}} /></StyledRemoveButton>
+          <StyledEditButton onClick={() => toggleEditingMode()}><MdEdit  size="1.15rem" style={{color:'#000000'}}/></StyledEditButton>
         </StyledToDo>
       )
     } else {
