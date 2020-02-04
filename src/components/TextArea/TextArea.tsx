@@ -35,10 +35,10 @@ const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
   return (
 
-  <StyledTextAreaContainer tabindex="0" data-testid="test-textarea" className="TextAreaWrapper" onSubmit={handleSubmit}>
+  <StyledTextAreaContainer  data-testid="test-textarea" className="TextAreaWrapper" onSubmit={handleSubmit}>
     <StyledLabel htmlFor="todo-text">New To Do</StyledLabel>
     <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What's to do?..." onChange={handleChange} />
-    <Button data-testid="todo-submit-btn" text="SAVE" />
+    <StyledToggleButton data-testid="todo-submit-btn" type="submit" text="SAVE" />
   </StyledTextAreaContainer>
 
   )

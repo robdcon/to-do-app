@@ -227,7 +227,7 @@ class App extends Component<{}, AppState> {
 
   render() {
     return (
-      <StyledApp className="App" tabindex="0">
+      <StyledApp className="App">
         <ToDoList >
         {
           this.state.toDoList.map((todo) => {
