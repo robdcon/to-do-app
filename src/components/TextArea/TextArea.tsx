@@ -20,7 +20,7 @@ const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
   }
 
   // SUBMIT FOR TO CREATE NEW TODO
-  const handleSubmit  = (e: FormEvent<HTMLButtonElement>) => {
+  const handleSubmit  = (e: FormEvent<HTMLFormElement>) => {
 
     e.preventDefault();
     // Check if newToDo has text
