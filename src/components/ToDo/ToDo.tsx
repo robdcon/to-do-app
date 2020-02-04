@@ -14,6 +14,7 @@ interface ToDoProps {
 const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => {
 
   const [hover, setHover] = useState(false);
+  const [checkboxFocus, setCheckboxFocus] = useState(false);
   const [editing, setEditing] = useState(false);
   const [newToDo , setNewToDo] = useState('');
 
@@ -25,6 +26,12 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
   const onMouseLeave = () => {
     setHover(false)
     // console.log('leave')
+  }
+
+  const handleCheckboxFocus = () =>{
+
+    setCheckboxFocus(!checkboxFocus);
+
   }
 
   const handleFocus = (e:KeyboardEvent) => {
@@ -91,10 +98,11 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
           onFocus={onMouseEnter}
           onBlur={onMouseLeave}
           htmlFor={ `checkbox-${todo.id}`}
+          checkBoxfocused={checkboxFocus}
          
   
         >
-          <StyledCheckBox id={ `checkbox-${todo.id}`} name="checkbox" type="checkbox" checked={todo.done} onFocus={() => console.log('checkbox')} onChange={() => toggleToDo(todo)} />
+          <StyledCheckBox tabindex="0" id={ `checkbox-${todo.id}`} name="checkbox" type="checkbox" checked={todo.done} onBlur={handleCheckboxFocus} onFocus={handleCheckboxFocus} onChange={() => toggleToDo(todo)} />
           {todo.text}
           <StyledRemoveButton onClick={() => removeToDo(todo)} />
           <StyledEditButton onClick={() => toggleEditingMode()} />
@@ -117,7 +125,7 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
           
           <StyledEditForm onSubmit={handleSubmit} aria-label="Edit To Do Text">
             <label htmlFor="edit-todo" aria-hidden="true">
-            <input type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo}  placeholder="What's to do?..." />
+            <input type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo} placeholder="What's to do?..." />
             </label>
             <Button text="SAVE" type="submit" />
             <Button text="CANCEL" handleClick={toggleEditingMode} />

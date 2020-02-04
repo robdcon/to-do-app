@@ -29,10 +29,11 @@ export const StyledToDo = styled.label`
    background-image: ${(props) => {return props.done ? `url(${greenTick})` :  `url(${redClose})`}};
    background-position: center;
    background-size:cover;
+   border: ${props => props.checkBoxfocused ? '1px solid blue' : 'none'};
    
 }
 
- text-decoration: ${props => props.done ? 'line-through' : 'none'}
+ text-decoration: ${props => props.done ? 'line-through' : 'none'};
 
 `;
 
