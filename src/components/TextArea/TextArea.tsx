@@ -38,8 +38,8 @@ const TextArea: React.FC<TextAreaProps> = ({addToDo}) => {
 
   <StyledTextAreaContainer  data-testid="test-textarea" className="TextAreaWrapper" onSubmit={handleSubmit}>
     <StyledLabel htmlFor="todo-text">New To Do</StyledLabel>
-    <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What's to do?..." onChange={handleChange} />
-    <StyledToggleButton data-testid="todo-submit-btn" type="submit"><MdAddCircle size={'1.5rem'} color={'#ffffff'}/></StyledToggleButton>
+    <StyledInput id="todo-text" value={newToDo} name="todo-text" placeholder="What do you need to do?" onChange={handleChange} />
+    <Button data-testid="todo-submit-btn" type="submit"><MdAddCircle size={'1.5rem'} color={'#ffffff'}/></Button>
   </StyledTextAreaContainer>
 
   )

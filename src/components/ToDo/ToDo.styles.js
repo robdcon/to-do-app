@@ -9,8 +9,6 @@ export const StyledToDo = styled.label`
    align-items:center;
    box-shadow:  1px 1px 5px rgb(163,177,198,0.6), -1px -1px 5px  rgba(255,255,255, 0.5);
    width:100%;
-   max-width:800px;
-   min-width:300px;
    min-height:50px;
    border-radius: 3px;
    text-decoration: ${props => props.done ? 'line-through' : 'none'};
@@ -33,22 +31,34 @@ export const StyledCheckBox = styled.input`
 
 export const StyledRemoveButton = styled.button`
 
-   position:absolute;
-   right:25px;
-   border-radius:100px;
+   position: absolute;
+   display: flex;
+   right: 25px;
    background-color: transparent;
-   border:none;
+   border: none;
+   border-radius:3px;
+   padding:0.015em;
+   box-sizing:border-box;
+   &:focus {
+      border: 1px solid #009688;
+      outline: none;
+   }
 
 `;
 
 export const StyledEditButton = styled.button`
 
-   position:absolute;
-   right:50px;
+   position: absolute;
+   display: flex;
+   right: 50px;
    background-color: transparent;
-   border:none;
+   border: none;
+   border-radius:3px;
+   padding:0.015em;
+   box-sizing:border-box;
    &:focus {
-      '1px solid #009688' : 'none'
+      border: 1px solid #009688;
+      outline: none;
    }
 
 `;
@@ -58,6 +68,8 @@ export const StyledEditForm = styled.form`
    display: flex;
    justify-content:center;
    align-items:center;
+   width: 100%;
+   padding-right: 1em;
 
 `;
 
@@ -65,8 +77,13 @@ export const StyledEditInput = styled.input`
 
    width: 80%;
    min-width: 300px;
-   padding: 0.35rem;
+   padding: 0.5rem;
    border: none;
+   border-radius:3px;
+   &:focus {
+      border: 1px solid #009688;
+      outline: none;
+   }
 
 `;
 

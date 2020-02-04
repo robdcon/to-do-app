@@ -9,7 +9,7 @@ export const StyledApp = styled.div`
     justify-content:flex-start;
     align-items:center;
     background-color: #ffffff;
-    padding: 5rem 2rem;
+    padding: 3%;;
     box-sizing: border-box;
    
 `;

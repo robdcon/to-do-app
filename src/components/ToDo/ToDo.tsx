@@ -14,10 +14,10 @@ interface ToDoProps {
 
 const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => {
 
-  const [hover, setHover] = useState(false);
-  const [checkboxFocus, setCheckboxFocus] = useState(false);
-  const [editing, setEditing] = useState(false);
-  const [newToDo , setNewToDo] = useState('');
+  const [hover, setHover] = useState(false); // Handle hover styles
+  const [checkboxFocus, setCheckboxFocus] = useState(false); // Handle focus of pseudo element for accessibility, effected by onChange of hidden native checkbox
+  const [editing, setEditing] = useState(false); // Set editing mode of ToDo to reveal a form for modifying text
+  const [newToDo , setNewToDo] = useState(''); // Set new ToDo text
 
   const onMouseEnter = () => {
     setHover(true)
@@ -40,21 +40,21 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
     e = e || window.event;
     let keyevent;
     switch(e.which || e.keyCode) {
-      case 37: // left
-        keyevent = 'LEFT';
-      break;
+      // case 37: // left
+      //   keyevent = 'LEFT';
+      // break;
 
-      case 38: // up
-        keyevent = 'UP';
-      break;
+      // case 38: // up
+      //   keyevent = 'UP';
+      // break;
 
-      case 39: // right
-        keyevent = 'RIGHT';
-      break;
+      // case 39: // right
+      //   keyevent = 'RIGHT';
+      // break;
 
-      case 40: // down
-        keyevent = 'DOWN';
-      break;
+      // case 40: // down
+      //   keyevent = 'DOWN';
+      // break;
 
       case 13: // down
         keyevent = 'ENTER';
@@ -114,9 +114,10 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
           <StyledEditButton onClick={() => toggleEditingMode()}><MdEdit  size="1.15rem" style={{color:'#000000'}}/></StyledEditButton>
         </StyledToDo>
       )
-    } else {
+    } else { // Display a form to edit ToDo when editing mode is true
      
         return (
+
           <StyledToDo 
             data-testid="test-todo" 
             done={todo.done} 
@@ -125,16 +126,16 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
             onMouseLeave={onMouseLeave}
             onFocus={onMouseEnter}
             onBlur={onMouseLeave}
-            onKeyDown={toggleToDo}
+            onKeyDown={toggleToDo} 
     
           >
           
           <StyledEditForm onSubmit={handleSubmit} aria-label="Edit To Do Text">
             <label htmlFor="edit-todo" aria-hidden="true">
-            <StyledEditInput type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo} placeholder="What's to do?..." />
+            <StyledEditInput type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo} placeholder="What do you need to do?" />
             </label>
-            <Button type="submit"><MdSave size="1.25em" /></Button>
-            <Button handleClick={toggleEditingMode} ><MdCancel size="1.25em" /></Button>
+            <Button type="submit"><MdSave size="1.25em" color={'#009688'} /></Button>
+            <Button handleClick={toggleEditingMode} ><MdCancel size="1.25em" color={'#e91e1e'}/></Button>
           </StyledEditForm>
          
           </StyledToDo>
@@ -143,8 +144,6 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
     
 
   }
-
- 
     return (
 
       renderComponent()

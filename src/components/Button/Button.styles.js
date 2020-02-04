@@ -6,4 +6,10 @@ export const StyledButton = styled.button`
     text-decoration:none;
     background-color:transparent;
     border:none;
+    padding: 0.25rem;
+    box-sizing:border-box;
+    &:focus {
+        border: 1px solid #009688;
+        outline: none;
+     }
 `;

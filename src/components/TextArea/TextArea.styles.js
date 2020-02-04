@@ -21,7 +21,13 @@ export const StyledToggleButton = styled.button`
     border: none;
     background-color: transparent;
     position: absolute;
-    right: 50px;
+    right: 3%;
+    padding:0.35em;
+    &focus {
+        outline: none;
+        border: 1px solid #ffffff;
+        border-radius: 3px;
+    }
 
 `;
 
@@ -31,6 +37,9 @@ export const StyledInput = styled.input`
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
+    border-radius:3px;
+    border:none;
+    padding-left:1rem;
 
 `;
 
