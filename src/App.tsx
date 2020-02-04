@@ -122,6 +122,43 @@ class App extends Component<{}, AppState> {
 
   }
 
+   /////////////////////////\
+  ///   ACCESSIBILITY   ///  \
+ /////////////////////////____\
+
+  handleFocus(e:KeyboardEvent) {
+      
+    e = e || window.event;
+    let direction;
+    switch(e.which || e.keyCode) {
+      case 37: // left
+        direction = 'LEFT';
+      break;
+
+      case 38: // up
+        direction = 'UP';
+      break;
+
+      case 39: // right
+        direction = 'RIGHT';
+      break;
+
+      case 40: // down
+        direction = 'DOWN';
+      break;
+
+      case 13: // down
+        direction = 'ENTER';
+      break;
+
+      default: return; // exit this handler for other keys
+    }
+
+      console.log(direction)
+
+
+  }
+
   // CHECK FOR LOCAL STORAGE
   checkLocalStorage() {
 
@@ -191,7 +228,17 @@ class App extends Component<{}, AppState> {
   render() {
     return (
       <StyledApp className="App" tabindex="0">
-        <ToDoList todos={this.state.toDoList} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo} />
+        <ToDoList todos={this.state.toDoList} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo} >
+        {
+          this.state.toDoList.map((todo) => {
+            return (
+              <li key={`${todo.id}`}>
+                <ToDo todo={todo} toggleToDo={this.toggleToDo} removeToDo={this.removeToDo} editToDo={this.editToDo}/>
+              </li>
+            )
+          })
+        }
+        </ToDoList>
         <TextArea addToDo={this.addToDo}/>
       </StyledApp>
     );

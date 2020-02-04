@@ -10,7 +10,7 @@ interface Props {
 
 const Button:React.FC<Props> = (props) => (
   <div className="ButtonWrapper">
-    <StyledButton data-testid="std-btn" type={props.type} onClick={props.handleClick}>
+    <StyledButton data-testid="std-btn" type={props.type} onClick={props.handleClick} role="button">
       {props.text}
     </StyledButton>
   </div>
