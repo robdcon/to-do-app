@@ -1,8 +1,8 @@
 import React, {useState, ChangeEvent, FormEvent} from 'react';
-import { StyledToDo, StyledCheckBox, StyledRemoveButton, StyledEditButton, StyledEditForm } from './ToDo.styles';
+import { StyledToDo, StyledCheckBox, StyledRemoveButton, StyledEditButton, StyledEditForm, StyledEditInput } from './ToDo.styles';
 import Button from '../Button';
 import TextArea from '../TextArea';
-import { MdCheckCircle, MdEdit, MdRemoveCircle } from "react-icons/md";
+import { MdCheckCircle, MdEdit, MdRemoveCircle, MdSave, MdCancel } from "react-icons/md";
 
 
 interface ToDoProps {
@@ -72,10 +72,13 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
   }
 
   const handleSubmit  = (e: FormEvent) => {
-
+    
     e.preventDefault();
-    editToDo({...todo, text:newToDo})
-    toggleEditingMode();
+    if(newToDo) {
+      editToDo({...todo, text:newToDo})
+      toggleEditingMode();
+    }
+   
 
   }
 
@@ -103,7 +106,7 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
          
   
         >
-          <MdCheckCircle size="1.15rem" style={{position:'absolute', left:'30px', border: `${checkboxFocus ? '1px solid blue' : 'none'}`}} className="todo-done-check" color={todo.done ? '#03c503' : '#c1c1c1'}/>
+          <MdCheckCircle size="1.15rem" style={{position:'absolute', left:'30px', borderRadius:'3px', border: `${checkboxFocus ? '1px solid #009688' : 'none'}`}} className="todo-done-check" color={todo.done ? '#03c503' : '#c1c1c1'}/>
           <StyledCheckBox tabindex="0" id={ `checkbox-${todo.id}`} name="checkbox" type="checkbox" checked={todo.done} onBlur={handleCheckboxFocus} onFocus={handleCheckboxFocus} onChange={() => toggleToDo(todo)}>
             </StyledCheckBox>
           {todo.text}
@@ -128,10 +131,10 @@ const ToDo: React.FC<ToDoProps> = ({todo, toggleToDo, removeToDo, editToDo}) => 
           
           <StyledEditForm onSubmit={handleSubmit} aria-label="Edit To Do Text">
             <label htmlFor="edit-todo" aria-hidden="true">
-            <input type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo} placeholder="What's to do?..." />
+            <StyledEditInput type="text" id="edit-todo" name="edit-todo" onChange={handleChange} value={newToDo} placeholder="What's to do?..." />
             </label>
-            <Button text="SAVE" type="submit" />
-            <Button text="CANCEL" handleClick={toggleEditingMode} />
+            <Button type="submit"><MdSave size="1.25em" /></Button>
+            <Button handleClick={toggleEditingMode} ><MdCancel size="1.25em" /></Button>
           </StyledEditForm>
          
           </StyledToDo>

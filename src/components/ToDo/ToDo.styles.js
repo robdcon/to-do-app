@@ -16,7 +16,7 @@ export const StyledToDo = styled.label`
    text-decoration: ${props => props.done ? 'line-through' : 'none'};
  
    &.active {
-      border: 1px solid blue;
+      border: 1px solid #009688;
    }
 
 `;
@@ -27,7 +27,7 @@ export const StyledCheckBox = styled.input`
    cursor:pointer;
    position:absolute;
    left:30px;
-   border: ${props => props.checkBoxfocused ? '1px solid blue' : 'none'};
+   border: ${props => props.checkBoxfocused ? '1px solid #009688' : 'none'};
  
 `;
 
@@ -47,6 +47,9 @@ export const StyledEditButton = styled.button`
    right:50px;
    background-color: transparent;
    border:none;
+   &:focus {
+      '1px solid #009688' : 'none'
+   }
 
 `;
 
@@ -56,6 +59,15 @@ export const StyledEditForm = styled.form`
    justify-content:center;
    align-items:center;
 
-`
+`;
+
+export const StyledEditInput = styled.input`
+
+   width: 80%;
+   min-width: 300px;
+   padding: 0.35rem;
+   border: none;
+
+`;
 
 
