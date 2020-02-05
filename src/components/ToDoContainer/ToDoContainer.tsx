@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, createContext, useMemo, useCallback, useContext } from 'react';
+import React, { Component } from 'react';
 import TextArea from '../TextArea';
 import ToDoList from '../ToDoList';
 import ToDo from '../ToDo';
@@ -13,25 +13,16 @@ interface initialProps {
   uniqueId: number
   toDoList: Array<ToDo>
 }
-// KEY FOR STORING AND RETRIEVING LIST FROM LOCAL STORAGE
+
+// Define a key for persistence to local storage
 const localToDoListKey = "to-do-list";
 
-type AppState = {
+type InitialState = {
   toDoList:Array<ToDo>
   uniqueId: number
 }
 
-const initialToDoList = [
-  {id:1, text:'one', done:false},
-  {id:2, text:'two', done:false}
-]
-
-
-   ///////////////////////////////\
-  ///   ORIGINAL APP SET UP   ///  \
- ///////////////////////////////____\
-
-class App extends Component<{}, AppState> {
+class ToDoContainer extends Component<{}, InitialState> {
 
   constructor(props: initialProps) { 
     super(props);
@@ -41,7 +32,7 @@ class App extends Component<{}, AppState> {
     }
   }
 
-  // CREATE UNIQUE ID
+  // Create unique ID each ToDo
   getUniqueId = () => {
 
     const id = this.state.uniqueId + 1;
@@ -50,7 +41,7 @@ class App extends Component<{}, AppState> {
 
   }
 
-  // ADD
+  // Add new ToDo to the array of ToDos
   addToDo: AddToDo = (newToDo) => {
    
     if(newToDo) {
@@ -60,7 +51,7 @@ class App extends Component<{}, AppState> {
     
   }
 
-  //EDIT 
+  // Return modified list with new text for selected ToDo
   editToDo: EditToDo = selectedToDo => {
 
     const newToDoList = this.state.toDoList.map((todo) => {
@@ -79,7 +70,7 @@ class App extends Component<{}, AppState> {
 
   }
  
-  // REMOVE
+  // Remove ToDo using filter
   removeToDo: RemoveToDo = (selectedToDo) => {
     const modifiedList = this.state.toDoList.filter((todo)=> {
         return todo != selectedToDo;
@@ -88,7 +79,7 @@ class App extends Component<{}, AppState> {
 
   }
 
-  // TOGGLE DONE
+  // Toggle done and apply appropriate styles
   toggleToDo: ToggleToDo = selectedToDo => {
     const newToDoList= this.state.toDoList.map((todo) => {
         if(todo === selectedToDo) {
@@ -104,44 +95,8 @@ class App extends Component<{}, AppState> {
 
   }
 
-   /////////////////////////\
-  ///   ACCESSIBILITY   ///  \
- /////////////////////////____\
 
-  handleFocus(e:KeyboardEvent) {
-      
-    e = e || window.event;
-    let direction;
-    switch(e.which || e.keyCode) {
-      case 37: // left
-        direction = 'LEFT';
-      break;
-
-      case 38: // up
-        direction = 'UP';
-      break;
-
-      case 39: // right
-        direction = 'RIGHT';
-      break;
-
-      case 40: // down
-        direction = 'DOWN';
-      break;
-
-      case 13: // down
-        direction = 'ENTER';
-      break;
-
-      default: return; // exit this handler for other keys
-    }
-
-      console.log(direction)
-
-
-  }
-
-  // CHECK FOR LOCAL STORAGE
+  // Check if local storage is enabled
   checkLocalStorage() {
 
       if (typeof localStorage !== 'undefined') {
@@ -169,7 +124,7 @@ class App extends Component<{}, AppState> {
       }
   }
 
-  // SAVE LIST TO LOCAL STORAGE
+  // Save the list to local storage
   saveToLocalStorage = () => {
     if(this.checkLocalStorage() === true)
     {
@@ -181,9 +136,8 @@ class App extends Component<{}, AppState> {
       
   }
   
-  // FIRST RENDER
   componentDidMount() {
-
+    // Check for a list in local storage
     const storedList = localStorage.getItem(`${localToDoListKey}`) || '';
    
     if(storedList) {
@@ -194,17 +148,11 @@ class App extends Component<{}, AppState> {
     console.log('Component Mounted')
   }
 
-  // SAVE TO LOCAL ON EACH MODIFICATION
+  // Persist the data after each update
   componentDidUpdate() {
 
     this.saveToLocalStorage();
     console.log('Component Updated')
-  }
-
-
-  componentWillUnmount() {
-   
-    console.log('Componernt Unmounted')
   }
 
   render() {
@@ -212,8 +160,13 @@ class App extends Component<{}, AppState> {
      
       <StyledToDoContainer className="App">
         <ToDoList >
-        {
-          this.state.toDoList.map((todo) => {
+        { 
+           ( !this.state.toDoList || this.state.toDoList.length === 0) ? (
+
+            <li><p>Nothing To Do!</p></li>
+
+           ) : ( 
+            this.state.toDoList.map((todo) => {
             return (
             <li key={`${todo.id}`}>
               <ToDo
@@ -223,7 +176,7 @@ class App extends Component<{}, AppState> {
                 editToDo={this.editToDo}
               />
             </li>)
-          })
+          }) )
         }
         </ToDoList>
         <TextArea addToDo={this.addToDo}/>
@@ -232,4 +185,4 @@ class App extends Component<{}, AppState> {
   }
 }
 
-export default App;
+export default ToDoContainer;

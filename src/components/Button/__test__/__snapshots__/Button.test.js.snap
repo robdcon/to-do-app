@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="ButtonWrapper"
+>
+  <button
+    className="sc-AykKC dxAvyB"
+    data-testid="std-btn"
+    role="button"
+  >
+    save
+  </button>
+</div>
+`;

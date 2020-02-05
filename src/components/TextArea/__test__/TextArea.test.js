@@ -32,19 +32,19 @@ describe("Input value", () => {
     })
 })
 
-// describe("Text area input", () => {
+describe("Text area input", () => {
 
-//     describe("with empty input value", () => {
+    describe("with empty input value", () => {
 
-//         it("does not trigger addToDo", () => {
+        it("does not trigger addToDo", () => {
 
-//             const onSubmit = jest.fn();
-//             const {queryByTestId, queryByPlaceholderText} = render(<TextArea onSubmit={onSubmit} />);
-//             fireEvent.click(queryByTestId('todo-submit-btn'));
-//             expect(onSubmit).not.toHaveBeenCalled();
+            const onSubmit = jest.fn();
+            const {queryByTestId, queryByPlaceholderText} = render(<TextArea onSubmit={onSubmit} />);
+            fireEvent.click(queryByTestId('todo-submit-btn'));
+            expect(onSubmit).not.toHaveBeenCalled();
 
 
-//         })
-//     })
-// })
+        })
+    })
+})
 
