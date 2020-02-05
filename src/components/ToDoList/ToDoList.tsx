@@ -16,7 +16,7 @@ import { StyledToDoList } from './ToDoList.styles';
 const ToDoList: React.FC = ({children }) => {
 
    return ( 
-      <StyledToDoList id="test-todo-list">
+      <StyledToDoList role="list" data-testid="test-todo-list">
 
       { 
        children

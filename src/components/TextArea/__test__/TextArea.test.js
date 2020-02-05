@@ -40,7 +40,8 @@ describe("Text area input", () => {
 
             const onSubmit = jest.fn();
             const {queryByTestId, queryByPlaceholderText} = render(<TextArea onSubmit={onSubmit} />);
-            fireEvent.click(queryByTestId('todo-submit-btn'));
+            //fireEvent.click(queryByTestId('todo-submit-btn'));
+            fireEvent.submit(queryByTestId('test-textarea'));
             expect(onSubmit).not.toHaveBeenCalled();
 
 

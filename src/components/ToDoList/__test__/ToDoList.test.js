@@ -20,15 +20,10 @@ const initialToDoList = [
     {text:"todo two",  done:true, id: 1}
   ]
 
-// test("renders ToDoList without crashing", ({todos}) => {
+test("renders ToDoList ul without crashing", () => {
 
-//     const div = document.createElement('div'); 
-//     ReactDOM.render(<ToDoList todos={initialToDoList} />, div)
+    const div = document.createElement('div'); 
+    const {getByTestId} = render(<ToDoList />, div);
+    expect (getByTestId('test-todo-list')).toBeTruthy()
+})
 
-
-// })
-
-// it("renders ToDoList component correctly", () => {
-//     const {getByTestId} = render(<ToDoList todos={initialToDoList} ></ToDoList>) 
-//    expect(getByTestId('test-todo-list')).toBe()
-// })

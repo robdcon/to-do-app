@@ -35,13 +35,14 @@ type InitialState = {
   uniqueId: number
 }
 
+
 class ToDoContainer extends Component<{}, InitialState> {
 
   constructor(props: initialProps) { 
     super(props);
     this.state = {
       uniqueId:0,
-      toDoList:testToDoList
+      toDoList:[]
     }
   }
 
