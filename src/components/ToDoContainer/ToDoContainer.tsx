@@ -4,6 +4,19 @@ import ToDoList from '../ToDoList';
 import ToDo from '../ToDo';
 import {StyledToDoContainer} from './ToDoContainer.styles.js';
 
+const testToDoList = [
+  {
+      id:0,
+      text:'test to do one',
+      done:false
+  },
+  {
+      id:1,
+      text:'test to do two',
+      done:false
+  }
+]
+
 interface LocalToDoList {
   id: number
   list: Array<ToDo>
@@ -28,7 +41,7 @@ class ToDoContainer extends Component<{}, InitialState> {
     super(props);
     this.state = {
       uniqueId:0,
-      toDoList:[]
+      toDoList:testToDoList
     }
   }
 
@@ -168,7 +181,7 @@ class ToDoContainer extends Component<{}, InitialState> {
            ) : ( 
             this.state.toDoList.map((todo) => {
             return (
-            <li key={`${todo.id}`}>
+            <li key={`${todo.id}`} data-testid="todo-list-li">
               <ToDo
                 todo={todo} 
                 toggleToDo={this.toggleToDo} 
