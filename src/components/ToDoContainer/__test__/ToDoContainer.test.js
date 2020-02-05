@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ToDoContainer from './../ToDoContainer';
-import { render, cleanup, getByText, toBeInTheDocument } from '@testing-library/react';
+import { render, cleanup} from '@testing-library/react';
+// import { getByText, toBeInTheDocument } from '@testing-library/jest-dom';
 import renderer from 'react-test-renderer'
 
 it("renders without crashing", () => {
@@ -14,5 +15,5 @@ it("renders without crashing", () => {
 test("Renders No ToDo text when toDoList is empty", () => {
 
     const {getByText} = render(<ToDoContainer />);
-    ReactDOM.expect(getByText(/Nothing To Do!/i).toBeInTheDocument())
+    expect(getByText(/Nothing To Do!/i)).toBeTruthy()
 })
